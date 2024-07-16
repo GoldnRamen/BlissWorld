@@ -428,3 +428,38 @@ font-size: 23px;
     cursor: pointer;
     line-height: 40px;
  }
+ .search{
+    display: flex;
+    flex-direction: column;
+    display: none;
+    padding-left: 30px;
+ }
+ .search_item{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid black;
+ }
+ .search_item2 h2{
+    padding-left: 30px;
+ }
+ .search_item2 ul{
+list-style: none;
+font-size: 22px;
+line-height: 40px;
+cursor: pointer;
+ }
+ .It{
+    display: flex;
+ }
+ #hideDiv{
+    font-size: 30px;
+    cursor: pointer;
+ }
+ .hidden{
+    display: none;
+}
+.visible{
+    display: block;
+}

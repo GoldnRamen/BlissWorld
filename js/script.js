@@ -35,5 +35,21 @@ $(document).ready(function (){
         
     });
 
+    // $('#hideDiv').click(function (){
+    //     $('#search').hide()
+    // })
+    // $('#showDiv').click(function (){
+    //     $('#search').show()
+    // })
+
+    $('#showDiv').click(function (){
+        $('#search').toggleClass('visible')
+     })
+ 
+        $('#hideDiv').click(function (){
+         $('#search').toggleClass('visible')
+     })
+    
+
 
 })
