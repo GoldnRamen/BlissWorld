@@ -379,7 +379,7 @@ font-size: 23px;
     margin-left: 40px;
 }
 
-#email {
+/* #email {
     height: 40px;
     width: 280px;
     font-size: 20px;
@@ -391,4 +391,28 @@ font-size: 23px;
     width: 280px;
     font-size: 20px;
     padding-left: 10px;
+} */
+#email {
+    height: 45px;
+    width: 400px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+#number {
+    height: 40px;
+    width: 280px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.error{
+    color: red;
+}
+#emailErr{
+    color: red;
+    
+}
+#passwordErr{
+    color: red;
+    
 }
