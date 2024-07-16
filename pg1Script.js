@@ -178,5 +178,343 @@ $(document).ready(function() {
     $("#addB").click(function(){
     
     })
+    $("#prodDetail1").hover(
+          function(){
+               $("#cart1").fadeIn()
+          },  
+          function(){
+               $("#cart1").fadeOut()
+          }
+     )
+    $("#prodDetail2").hover(
+          function(){
+               $("#cart2").fadeIn()
+          },  
+          function(){
+               $("#cart2").fadeOut()
+          }
+     )
+    $("#prodDetail3").hover(
+          function(){
+               $("#cart3").fadeIn()
+          },  
+          function(){
+               $("#cart3").fadeOut()
+          }
+     )
+    $("#prodDetail4").hover(
+          function(){
+               $("#cart4").fadeIn()
+          },  
+          function(){
+               $("#cart4").fadeOut()
+          }
+     )
+    $("#prodDetail5").hover(
+          function(){
+               $("#cart5").fadeIn()
+          },  
+          function(){
+               $("#cart5").fadeOut()
+          }
+     )
+    $("#prodDetail6").hover(
+          function(){
+               $("#cart6").fadeIn()
+          },  
+          function(){
+               $("#cart6").fadeOut()
+          }
+     )
+    $("#prodDetail7").hover(
+          function(){
+               $("#cart7").fadeIn()
+          },  
+          function(){
+               $("#cart7").fadeOut()
+          }
+     )
+    $("#prodDetail8").hover(
+          function(){
+               $("#cart8").fadeIn()
+          },  
+          function(){
+               $("#cart8").fadeOut()
+          }
+     )
+    $("#prodDetail9").hover(
+          function(){
+               $("#cart9").fadeIn()
+          },  
+          function(){
+               $("#cart9").fadeOut()
+          }
+     )
+    $("#prodDetail10").hover(
+          function(){
+               $("#cart10").fadeIn()
+          },  
+          function(){
+               $("#cart10").fadeOut()
+          }
+     )
+    $("#prodDetail11").hover(
+          function(){
+               $("#cart11").fadeIn()
+          },  
+          function(){
+               $("#cart11").fadeOut()
+          }
+     )
+    $("#prodDetail12").hover(
+          function(){
+               $("#cart12").fadeIn()
+          },  
+          function(){
+               $("#cart12").fadeOut()
+          }
+     )
+    $("#prodDetail13").hover(
+          function(){
+               $("#cart13").fadeIn()
+          },  
+          function(){
+               $("#cart13").fadeOut()
+          }
+     )
+    $("#prodDetail14").hover(
+          function(){
+               $("#cart14").fadeIn()
+          },  
+          function(){
+               $("#cart14").fadeOut()
+          }
+     )
+    $("#prodDetail15").hover(
+          function(){
+               $("#cart15").fadeIn()
+          },  
+          function(){
+               $("#cart15").fadeOut()
+          }
+     )
+    $("#prodDetail16").hover(
+          function(){
+               $("#cart16").fadeIn()
+          },  
+          function(){
+               $("#cart16").fadeOut()
+          }
+     )
+    $("#prodDetail17").hover(
+          function(){
+               $("#cart17").fadeIn()
+          },  
+          function(){
+               $("#cart17").fadeOut()
+          }
+     )
+    $("#prodDetail18").hover(
+          function(){
+               $("#cart18").fadeIn()
+          },  
+          function(){
+               $("#cart18").fadeOut()
+          }
+     )
+    $("#prodDetail19").hover(
+          function(){
+               $("#cart19").fadeIn()
+          },  
+          function(){
+               $("#cart19").fadeOut()
+          }
+     )
+    $("#prodDetail20").hover(
+          function(){
+               $("#cart20").fadeIn()
+          },  
+          function(){
+               $("#cart20").fadeOut()
+          }
+     )
+    $("#prodDetail21").hover(
+          function(){
+               $("#cart21").fadeIn()
+          },  
+          function(){
+               $("#cart21").fadeOut()
+          }
+     )
+    $("#prodDetail22").hover(
+          function(){
+               $("#cart22").fadeIn()
+          },  
+          function(){
+               $("#cart22").fadeOut()
+          }
+     )
+    $("#prodDetail23").hover(
+          function(){
+               $("#cart23").fadeIn()
+          },  
+          function(){
+               $("#cart23").fadeOut()
+          }
+     )
+    $("#prodDetail24").hover(
+          function(){
+               $("#cart24").fadeIn()
+          },  
+          function(){
+               $("#cart24").fadeOut()
+          }
+     )
+    $("#prodDetail25").hover(
+          function(){
+               $("#cart25").fadeIn()
+          },  
+          function(){
+               $("#cart25").fadeOut()
+          }
+     )
+    $("#prodDetail26").hover(
+          function(){
+               $("#cart26").fadeIn()
+          },  
+          function(){
+               $("#cart26").fadeOut()
+          }
+     )
+    $("#prodDetail27").hover(
+          function(){
+               $("#cart27").fadeIn()
+          },  
+          function(){
+               $("#cart27").fadeOut()
+          }
+     )
+    $("#prodDetail28").hover(
+          function(){
+               $("#cart28").fadeIn()
+          },  
+          function(){
+               $("#cart28").fadeOut()
+          }
+     )
+    $("#prodDetail29").hover(
+          function(){
+               $("#cart29").fadeIn()
+          },  
+          function(){
+               $("#cart29").fadeOut()
+          }
+     )
+    $("#prodDetail30").hover(
+          function(){
+               $("#cart30").fadeIn()
+          },  
+          function(){
+               $("#cart30").fadeOut()
+          }
+     )
+    $("#prodDetail31").hover(
+          function(){
+               $("#cart31").fadeIn()
+          },  
+          function(){
+               $("#cart31").fadeOut()
+          }
+     )
+    $("#prodDetail32").hover(
+          function(){
+               $("#cart32").fadeIn()
+          },  
+          function(){
+               $("#cart32").fadeOut()
+          }
+     )
+//     $("#STar1").hover(
+//      function(){
+//           $("#STar1").fadeOut()
+//           $("#noStar1").fadeIn()
+//                $("#star-Box1").css({
+//                     "background-color": "#725ac7"
+//                })
+//      },
+//      function(){
+//           $("#STar1").fadeIn()
+//           $("#noStar1").fadeOut()
+//                $("#star-Box1").css({
+//                     "background-color": "transparent"
+//                })
+//      }
+
+//     )
+     $("#STar1").hover(
+          function(){
+          $("#STar1").hide();
+          $("#noStar1").show();
+          $("#star-Box1").css({
+               "background-color": "#725ac7"
+          });
+          },
+          function(){
+          $("#STar1").show();
+          $("#noStar1").hide();
+          $("#star-Box1").css({
+               "background-color": "transparent"
+          });
+          }
+     );
+     $("#STar2").hover(
+          function(){
+          $("#STar1, #STar2").hide();
+          $("#noStar1, #noStar2").show();
+          $("#star-Box1, #star-Box2").css({
+               "background-color": "#725ac7"
+          });
+          },
+          function(){
+          $("#STar1, #STar2").show();
+          $("#noStar1, #noStar2").hide();
+          $("#star-Box1, #star-Box2").css({
+               "background-color": "transparent"
+          });
+          }
+     );
+     $("#STar3").hover(
+          function(){
+          $("#STar1, #STar2, #STar3").hide();
+          $("#noStar1, #noStar2, #noStar3").show();
+          $("#star-Box1, #star-Box2, #star-Box3").css({
+               "background-color": "#725ac7"
+          });
+          },
+          function(){
+          $("#STar1, #STar2, #STar3").show();
+          $("#noStar1, #noStar2, #noStar3").hide();
+          $("#star-Box1, #star-Box2, #star-Box3").css({
+               "background-color": "transparent"
+          });
+          }
+     );
+     $("#STar4").hover(
+          function(){
+          $("#STar1, #STar2, #STar3, #STar4").hide();
+          $("#noStar1, #noStar2, #noStar3, #noStar4").show();
+          $("#star-Box1, #star-Box2, #star-Box3, #star-Box4").css({
+               "background-color": "#725ac7"
+          });
+          },
+          function(){
+          $("#STar1, #STar2, #STar3").show();
+          $("#noStar1, #noStar2, #noStar3").hide();
+          $("#star-Box1, #star-Box2, #star-Box3").css({
+               "background-color": "transparent"
+          });
+          }
+     );
+ 
 
 })

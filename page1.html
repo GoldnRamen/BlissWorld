@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlissWorld</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js">
     
+    <link href='https://fonts.googleapis.com/css?family=Frank Ruhl Libre' rel='stylesheet'>
 </head>
 <style>
+    body{
+    font-family: "ArcherBoldPro";
+    }
+    @font-face {
+        font-family: "ArcherBoldPro";
+        src: url("./archer-2/ArcherBoldPro.otf");
+    }
+    @font-face {
+    font-family: "CeraStencilPRO-Regular";
+    src: url("./CeraStencilPRO-Regular.ttf");
+    }
     .mt{
         margin-top: 100px;
     }
@@ -173,15 +186,23 @@
         margin-top: 10px;
         gap: 10px;
     }
+    .prodDetail p:nth-child(3), .prodDetail p:nth-child(4){
+        font-style: italic;
+    }
+    .prodDetail p{
+        font-size: 1.3rem;
+    }
     .prodDetail p{
         margin: 0;
         text-align: center;
     }
     .A-disppearingCart{
-        background-color: rgb(0, 153, 255);
+        background-color: rgb(129, 192, 235);
         width: 100%;
         text-align: center;
         margin-top: 10px;
+        font-family: "CeraStencilPRO-Regular";
+        /* display: none; */
     }
     .Block2{
         position: relative;
@@ -218,11 +239,25 @@
         text-align: end;
 
     }
+    #cart1{
+        display: none;
+    }
+    #cart2{
+        display: none;
+    }
+    #cart3, #cart4, #cart5, #cart6, #cart7, #cart8, #cart9, 
+    #cart10, #cart11, #cart12, #cart13, #cart14, #cart15, #cart16, 
+    #cart17, #cart18, #cart19, #cart20, #cart21, #cart22, #cart23, 
+    #cart24, #cart25, #cart26, #cart27, #cart28, #cart29, #cart30, 
+    #cart31, #cart32
+    {
+        display: none;
+    }
 </style>
 <body>
     <div class="A-body">
         <div class="A-sectionHeader">
-            <h1>
+            <h1 style="font-family: CeraStencilPRO-Regular; font-size: 2rem;">
                 SELECT YOUR SKIN CONCERN:
             </h1>
         </div>
@@ -266,12 +301,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Best Seller  4.5(600)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail1">
                         <p>Lemon & Sage Body Butter</p> 
                         <p>$13.00</p>
                         <p>Lemon & Sage Maximum Moisture Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart1">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -291,13 +326,13 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Best Seller  5.0(2)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail2">
                         <p>Seriously Smooth Skin Kit</p> 
                         <p>$24.00 $19.00</p>
                         <p>$28.00 VALUE</p>
                         <p>Smooth out rough, bumpy skin with this Lemon & <br> Sage Duo!</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart2">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -323,12 +358,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.7(12)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail3">
                         <p>Self-Heating Sea Salt Scrub</p> 
                         <p>$20.00</p>
                         <p>Self-Heating Body Polish</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart3">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>  
@@ -353,12 +388,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Best Seller  4.5(377)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail4">
                         <p>Naked Body Butter Unscented Moisturizer</p> 
                         <p>$13.00</p>
                         <p>Maximum Fragrance Free Moisture Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart4">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -380,12 +415,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Best Seller  4.6(287)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail5">
                         <p>Grapefruit & Aloe Body Butter</p> 
                         <p>$13.00</p>
                         <p>Grapefruit Maximum Moisture Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart5">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -406,12 +441,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Best Seller  4.2(749)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail6">
                         <p>Poetic Waxing At Home Wax Kit</p> 
                         <p>$25.00</p>
                         <p>Straight-from-the-Spa Hair Removal Kit</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart6">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -432,13 +467,13 @@
                         <h3>Best Seller  4.7(1481)</h3>
                     </div>
 
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail7">
                         <p>Butter Together Body Butter Set</p> 
                         <p>$42.00 $36.00</p>
                         <p>$52 VALUE</p>
                         <p>Cult-Fave Body Butter Quad</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart7">
                         <h2>ADD TO BAG</h2>
                     </div>
 
@@ -464,12 +499,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.4(206)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail8">
                         <p>Blood Orange & White Pepper Body <br> Butter</p> 
                         <p>$13.00</p>
                         <p>Maximum Orange Moisture Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart8">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div> 
@@ -496,12 +531,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.6(81)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail9">
                         <p>Texture Takedown Skin Smoothing <br>Body Butter</p> 
                         <p>$15.00</p>
                         <p>For Rough, Bumpy Skin</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart9">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -520,12 +555,12 @@
                         <h3>4.9(8)</h3>
                     </div>
 
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail10">
                         <p>Lemon & Sage Refreshing Body <br>Wipes</p> 
                         <p>$8.00</p>
                         <p>With Natural Deodorant</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart10">
                         <h2>ADD TO BAG</h2>
                     </div>
 
@@ -546,12 +581,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.5(604)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail11">
                         <p>Lemon & Sage Hand Cream 1.7 oz <br> Mini</p> 
                         <p>$5.00</p>
                         <p>Your favorite scent now in travel size</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart11">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -572,12 +607,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.6(137)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail12">
                         <p>Lemon & Sage Soapy Suds Body <br> Wash</p> 
                         <p>$14.00 - $22.00</p>
                         <p>Lemon & Sage Body Wash with Aloe</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart12">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -597,12 +632,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.5(754)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail13">
                         <p>Lemon Love Duo</p> 
                         <p>$29.00 $24.00</p>
                         <p>$35 VALUE</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart13">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -621,12 +656,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.6(137)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail14">
                         <p>Aloe Leaf & Peppermint Foot Cream</p> 
                         <p>$10.00</p>
                         <p>Super Softening & AHA Exfoliating Cooling Foot <br> Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart14">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -647,12 +682,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.3(36)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail15">
                         <p>Lemon & Sage Satin-Skin Body Scrub</p> 
                         <p>$15.00</p>
                         <p>With Shea Butter & Coconut Oil</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart15">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -668,12 +703,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.3(6)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail16">
                         <p>Go Scrubs Exfoliating Back & Body <br> Brush</p> 
                         <p>$15.00</p>
                         <p>Dual-Sided Body Scrubber</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart16">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -692,12 +727,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.8(26)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail17">
                         <p>Ingrown Hair & Razor Bump <br> Eliminating Solution</p> 
                         <p>$20.00</p>
                         <p>For The Body With Salicylic & Glycolic Acids</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart17">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -714,13 +749,13 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.2(778)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail18">
                         <p>Wax & Relax Hair Removal Kit</p> 
                         <p>$36.00 $31.00</p>
                         <p>$45 VALUE</p>
                         <p>Spa Hair Removal Duo</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart18">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -739,12 +774,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail19">
                         <p>Rooting For You Microfiber Hair Wrap Duo-Blue</p> 
                         <p>$14.00</p>
                         <p>Quick-drying hair turban</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart19">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -763,12 +798,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(2)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail20">
                         <p>Rooting For You Scalp Massager</p> 
                         <p>$8.00</p>
                         <p>Boosts scalp health for stronger hair</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart20">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -790,12 +825,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail21">
                         <p>Go Scrubs Face + Body Exfoliating <br> Gloves-Pink/Yellow/Blue</p> 
                         <p>$15.00</p>
                         <p>Promotes circulation and silky smooth skin</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart21">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -812,12 +847,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(2)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail22">
                         <p>Rooting For You Microfiber Hair <br> Wrap Duo-Pink</p> 
                         <p>$14.00</p>
                         <p>Quick-drying hair turban</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart22">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -842,12 +877,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail23">
                         <p>Lemon & Sage Body Butter 32 oz</p> 
                         <p>$60.00</p>
                         <p>Lemon & Sage Maximum Moisture Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart23">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -864,12 +899,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>0.0(0)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail24">
                         <p>Cloud 9 Hydrating Hand Soap, <br> Lemon & Sage With Aloe Vera & <br> Hyaluronic Acid</p> 
                         <p>$10.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart24">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -894,12 +929,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>1.0(2)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail25">
                         <p>Supershine Conditioner, Lemon & <br> Sage With Avocado & Coconut Oils <br> and Shea Butter</p> 
                         <p>$42.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart25">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -916,12 +951,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>0.0(0)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail26">
                         <p>Cloud 9 Hydrating Body Moisturizer, <br> Lemon & Sage With Shea Butter and <br> Hyaluronic Acid</p> 
                         <p>$38.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart26">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -946,12 +981,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>1.1(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail27">
                         <p>Cloud 9 Nourishing Body Wash, <br> Lemon & Sage With Aloe Vera & <br> Hyaluronic Acid</p> 
                         <p>$28.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart27">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -968,12 +1003,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>1.0(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail28">
                         <p>Supershine Conditioner, Blood <br> Orange & White Pepper With <br> Avocado & Coconut Oils and Shea <br> Butter</p> 
                         <p>$42.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart28">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -997,12 +1032,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>3.0(1)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail29">
                         <p>Supershine Shampoo, Blood Orange <br> & White Pepper With Vita-Shea <br> Blend (Vitamins B3, C and E)</p> 
                         <p>$42.00</p>
                         <p>Excluded from promotions</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart29">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -1024,12 +1059,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>4.6(692)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail30">
                         <p>Clear Genius Body Acne Spray</p> 
                         <p>$18.00</p>
                         <p>Maximum Strength Salicylic Acid Spray</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart30">
                         <h2>Sold Out</h2>
                     </div> 
                 </div>
@@ -1049,12 +1084,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>3.2(80)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail31">
                         <p>Mint Scrub Soap</p> 
                         <p>$16.00</p>
                         <p>Super-Cooling Mint Bath Bar</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart31">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
@@ -1074,12 +1109,12 @@
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>5.0(3)</h3>
                     </div>
-                    <div class="prodDetail">
+                    <div class="prodDetail" id="prodDetail32">
                         <p>Oh, That's Rich Body Lotion for Dry <br> Skin</p> 
                         <p>$20.00</p>
                         <p>Ultra Silky-Sheen Body Cream</p>
                     </div>
-                    <div class="A-disppearingCart">
+                    <div class="A-disppearingCart" id="cart32">
                         <h2>Sold Out</h2>
                     </div>
                 </div>
