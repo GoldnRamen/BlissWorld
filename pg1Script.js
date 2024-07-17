@@ -176,7 +176,7 @@ $(document).ready(function() {
       shu()
     })
     $("#addB").click(function(){
-    
+    //////////////////////////////////////////////
     })
     $("#prodDetail1").hover(
           function(){
@@ -508,13 +508,48 @@ $(document).ready(function() {
           });
           },
           function(){
-          $("#STar1, #STar2, #STar3").show();
-          $("#noStar1, #noStar2, #noStar3").hide();
-          $("#star-Box1, #star-Box2, #star-Box3").css({
+          $("#STar1, #STar2, #STar3, #STar4").show();
+          $("#noStar1, #noStar2, #noStar3, #noStar4").hide();
+          $("#star-Box1, #star-Box2, #star-Box3, #star-Box4").css({
                "background-color": "transparent"
           });
           }
      );
- 
+     $("#STar5").hover(
+          function(){
+          $("#STar1, #STar2, #STar3, #STar4, #STar5").hide();
+          $("#noStar1, #noStar2, #noStar3, #noStar4, #noStar5").show();
+          $("#star-Box1, #star-Box2, #star-Box3, #star-Box4, #star-Box5").css({
+               "background-color": "#725ac7"
+          });
+          },
+          function(){
+          $("#STar1, #STar2, #STar3, #STar4, #STar5").show();
+          $("#noStar1, #noStar2, #noStar3, #noStar4, #noStar5").hide();
+          $("#star-Box1, #star-Box2, #star-Box3, #star-Box4, #star-Box5").css({
+               "background-color": "transparent"
+          });
+          }
+     );
+     $(".A-disappearingCart").hover(function(){
+          $(this).show()
+     })
 
+     $(".A-disappearingCart").click(function(){
+          $(".blissCart").show()
+     })
+     // $("#prodDetail1").click(function(){
+     //      $("#cart1").removeProp("none")
+     // })
+     $("#cart1, #cart2, #cart3, #cart4, #cart5, #cart6, #cart7, #cart8, #cart9, #cart10, #cart11, #cart12, #cart13, #cart14, #cart15, #cart16, #cart17, #cart18, #cart19, #cart20, #cart21, #cart22, #cart23, #cart24, #cart25, #cart26, #cart27, #cart28, #cart29, #cart30, #cart31")
+     .click(function(){
+          $(".blissCart").show()
+     })
+     $("#cartClose").click(function(){
+          $(".blissCart").hide()
+     })
+     
+     $("#B-cart").click(function(){
+          $(".blissCart").show()
+     })
 })

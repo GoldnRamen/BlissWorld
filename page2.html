@@ -15,6 +15,106 @@
     <link href='https://fonts.googleapis.com/css?family=Frank Ruhl Libre' rel='stylesheet'>
 </head>
 <body>
+    <div class="blissCart none">
+            
+        <div class="cart-top">
+            <div style="border-bottom: 1px solid black; ">
+                <div><h5>Your Bag</h5></div>
+            <div id="cartClose" style="position: fixed; top: 5px; right: 30px; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 100; cursor: pointer;"><h3>X</h3></div>
+            </div>
+            <div style="align-items: center; margin-top: 10px;">
+                <div class="cart-top-bar"></div>
+                <div><h5 style="margin: 0;">🎉 Congrats! You've unlocked FREE SHIPPING!</h5></div>
+            </div>
+            <hr>
+        </div>
+        <div class="cart-mid">
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+            
+        </div>
+        <div class="cart-bottom" style="border-top: 1px solid black;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div><h3>Subtotal (14 items)</h3></div>
+                <div><h3>=</h3></div>
+            </div>
+            <div class="cart-bottom-bar" style="text-align: center;"><h2>Checkout</h2></div>
+        </div>
+    </div>
     <div class="B-head">
         <div class="B-leftSideImages">
             <img src="images/Bliss-SeriouslySmoothKit-Soldier-ECommerce_JPG.webp" alt="IMAGES">
@@ -52,7 +152,7 @@
                         <input type="number" id="B-quanInput">
                         <button id="addB">+</button>
                     </div>
-                    <div class="B-cart">
+                    <div class="B-cart" id="B-cart">
                         <h2>ADD TO BAG</h2>
                     </div>
                 </div>
@@ -324,8 +424,8 @@
     </div>
     
 
-    <div style="background-color: blueviolet; height: 200px; width: 100%; margin-top: 20px;">
-    </div>
+    <!-- <div style="background-color: blueviolet; height: 200px; width: 100%; margin-top: 20px;">
+    </div> -->
     <div class="customerReviewRatings">
         <div><h2>Average Customer Ratings</h2></div>
         <div class="review-body">
