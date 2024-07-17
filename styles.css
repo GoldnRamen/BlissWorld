@@ -10,8 +10,8 @@ body {
     src: url("./archer-2/ArcherBoldPro.otf");
 }
 @font-face {
-font-family: "CeraStencilPRO-Regular";
-src: url("./CeraStencilPRO-Regular.ttf");
+    font-family: "CeraStencilPRO-Regular";
+    src: url("./CeraStencilPRO-Regular.ttf");
 }
 .header {
     height: 60px;
@@ -57,28 +57,30 @@ font-size: 23px;
 .header2 {
     display: flex;
     height: 140px;
+    justify-content: center;
     flex-direction: column;
     width: 100%;
     background-color: rgb(148, 220, 238);
 }
-
+.nav_list{
+    bottom: 5px;
+}
 .nav_list ul {
     display: flex;
     flex-direction: row;
+    margin: 0;
     gap: 50px;
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: 10;
     justify-content: center;
     text-decoration: none;
     list-style: none;
     cursor: pointer;
-    
+    font-family: "ArcherBoldPro";
 }
-.nav_list {
-    padding-bottom: 30px;
-    margin-bottom: 20px;
-
+.nav_list li:hover{
+    border-bottom: 5px solid white;
 }
-
 
 /* #head_img{
     display: flex;
@@ -103,25 +105,20 @@ font-size: 23px;
 .row {
     display: flex;
     flex-direction: row;
-    margin-left: 600px;
     gap: 20px;
 }
 
 .head_content1 {
     display: flex;
     flex-direction: row;
-    margin-left: 790px;
-    padding-top: 30px;
-    /* justify-content: space-around; */
+    margin-left: 50%;
+    margin-bottom: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between
 }
 
-/* #w_logo{ */
 
-
-/* align-items: center;
-    text-align: center;
-    margin-left: 80px; */
-/* } */
 .banner_1 img {
     background-position: center;
     background-size: cover;
@@ -177,11 +174,8 @@ font-size: 23px;
 .prod_3_cont {
     display: flex;
     flex-direction: column;
-    background-color: red;
-    /* background-color: #e8f6f9; */
-    /* background-color: rgb(232,246,249); */
-    height: 160px;
 
+    height: 320px;
 }
 
 .prod_3 img {
@@ -302,11 +296,12 @@ font-size: 23px;
 }
 
 .footer {
-    height: 700px;
+    height: 600px;
     /* background-color: #8cd0e3;
     background-color: rgb(140,208,227); */
     display: flex;
     flex-direction: row;
+    margin-bottom: 100px;
 
 
 }
@@ -316,7 +311,7 @@ font-size: 23px;
     grid-template-columns: 1fr 1fr 1fr 2fr;
     background-color: #8cd0e3;
     background-color: rgb(140, 208, 227);
-    width: 92%;
+    width: 90%;
     text-align: left;
     padding-top: 60px;
 
@@ -344,7 +339,7 @@ font-size: 23px;
 
 }
 .foot_item ul p {
-    margin-top: 280px;
+    margin-top: 200px;
     color: rgb(41, 39, 39);
     font-size: 20px;
 
@@ -368,7 +363,7 @@ font-size: 23px;
     background-color: #dfddeb;
     background-color: rgb(223, 221, 235);
     /* height: 70px; */
-    width: 8%;
+    width: 10%;
     display: flex;
     flex-direction: column;
 }
@@ -376,10 +371,18 @@ font-size: 23px;
 .foot_item ul {
     list-style: none;
 }
-
+.foot_item h2{
+    font-family: "CeraStencilPRO-Regular";
+}
 .foot_item li {
-    font-size: 19px;
+    font-size: 17px;
     line-height: 40px;
+}
+.foot_item h3{
+    font-size: 17px;
+}
+.foot_item p{
+    font-size: 12px;
 }
 
 .foot_item button {

@@ -9,8 +9,6 @@
     
     <link rel="stylesheet" href="cssStyles.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles2.css">
-    <link rel="stylesheet" href="styles3.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js">
@@ -28,16 +26,15 @@
             <div class="head_content1">
                 <!-- <div id="head_img"> -->
                     <div>
-                        <img src="./images/Bliss_Logo_White_3x_6c3396d6-15e0-4c23-a933-633783887842_140x.png"
-                            id="w_logo" alt="" style=" width: 100%; cursor: pointer;">
+                        <a href="index.html"><img src="./images/Bliss_Logo_White_3x_6c3396d6-15e0-4c23-a933-633783887842_140x.png" alt="" style=" width: 100%; cursor: pointer;"></a>
                     </div>
                 <!-- </div> -->
                 
                     <div class="row">
-                        <img src="./images/search-interface-symbol.png" alt="" style="width: 30px; height: 30px; cursor: pointer;" id="showDiv">
+                        <img src="./images/search-interface-symbol.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
                     
                     
-                        <a href="login.html"><img src="./images/user.png" alt="" style="width: 40px; height: 30px; cursor: pointer;"></a>
+                        <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
             
                 
                         <img src="./images/shopping-bag (1).png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
@@ -49,11 +46,11 @@
         </div>
         <div class="nav_list">
             <ul>
-                <li>Shop All</li>
+                <li><a href="index.html" style="color: black; text-decoration: none;">Shop All</a></li>
                 <li>Best Sellers</li>
                 <li>Skincare</li>
                 <li>Shop By Concern</li>
-                <li>Body care</li>
+                <li><a href="page1.html" style="color: black; text-decoration: none;">Body care</a></li>
                 <li>Sets & Kits</li>
                 <li>Famous Faces</li>
                 <li>Skin Quiz</li>
@@ -564,7 +561,7 @@
             </div> 
             <div class="groupd">
                 <h4>Skin Concern</h4>
-                <select name="Skin Concern" id="">
+                <select name="Skin Concern" id="" class="selectWidth">
                     <option value=""></option>
                     <option value="">Fine Lines / Wrinkles</option>
                     <option value="">Redness</option>
@@ -575,7 +572,7 @@
             </div>
             <div class="groupd">
                 <h4>Locale</h4>
-                <select name="Locale" id="">
+                <select name="Locale" id="" class="selectWidth">
                     <option value=""></option>
                     <option value="">English</option>
                     <option value="">English (United States)</option>
@@ -691,8 +688,8 @@
 
     </div>
     
-    <div class=".prod_3_cont"
-        style="background-color:#e8f6f9; background-color: rgb(232,246,249); height: 400px; padding-top: 30px;">
+    <div class="prod_3_cont"
+        style="background-color:#e8f6f9; background-color: rgb(232,246,249); padding-top: 30px;">
         <div id="txt">
             <p>_____________________ Discover even more to love from our sister brands. ____________________</p>
         </div>
@@ -709,6 +706,10 @@
         </div>
     </div>
 
+    <div class="bottom_item">
+        <div id="item"><p>free shipping on orders $45+</p></div>
+        <div id="item2"><p>we ship internationally</p></div>
+    </div>
     <div class="footer">
         <div class="foot_1">
             <div class="foot_item">
@@ -751,7 +752,7 @@
                 <h2>STAY IN TOUCH</h2>
                 <h3>Sign up for our newsletter to receive 20% off your first order!</h3>
                 <input id="email" type="text" placeholder="Email Address"> <button>submit</button>
-                <p>By signing up for our newsletter, you agree to our <a href="terms.html"><span>terms</span> </a> and <span>privacy policy</span></p>
+                <p>By signing up for our newsletter, you agree to our <span>terms</span>  and <span>privacy policy</span></p>
                 
                 <h3>Prefer texting? Sign up for texts to receive SMS exclusive <br> <br>offers plus 20% off your first order</h3>
                 <input id="number" type="text" placeholder="Phone number"> <button>submit</button>
@@ -770,6 +771,7 @@
         </div>
 
     </div>
+        
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="pg1Script.js"></script>
 </body>

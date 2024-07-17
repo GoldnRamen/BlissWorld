@@ -56,17 +56,6 @@ font-size: 23px;
     background-color: rgb(148, 220, 238);
 }
 
-.nav_list ul {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    font-size: 25px;
-    justify-content: center;
-    text-decoration: none;
-    list-style: none;
-    cursor: pointer;
-}
-
 
 /* #head_img{
     display: flex;

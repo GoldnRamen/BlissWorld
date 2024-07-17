@@ -251,15 +251,13 @@ src: url("./CeraStencilPRO-Regular.ttf");
     margin-top: 10px;
     gap: 10px;
 }
-.prodDetail p:nth-child(3), .prodDetail p:nth-child(4){
-    font-style: italic;
-}
+
+
 .prodDetail p{
     font-size: 1.3rem;
 }
-.prodDetail p{
-    margin: 0;
-    text-align: center;
+.prodDetail:hover{
+  cursor: pointer;
 }
 .A-disppearingCart{
     background-color: rgb(129, 192, 235);
@@ -304,6 +302,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
     text-align: end;
 
 }
+
 #cart1{
     display: none;
 }
@@ -641,6 +640,9 @@ src: url("./CeraStencilPRO-Regular.ttf");
     display: flex;
     gap: 30px;
     margin-top: 20px;
+}
+.selectWidth{
+    width: 50px;
 }
 .groupd{
     border: .5px solid black;

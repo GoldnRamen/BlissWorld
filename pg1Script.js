@@ -552,4 +552,7 @@ $(document).ready(function() {
      $("#B-cart").click(function(){
           $(".blissCart").show()
      })
+     $("#prodDetail1").click(function(){
+          window.location.href = "page2.html"
+     })
 })
