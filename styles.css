@@ -3,8 +3,16 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "ArcherBoldPro";
 }
-
+@font-face {
+    font-family: "ArcherBoldPro";
+    src: url("./archer-2/ArcherBoldPro.otf");
+}
+@font-face {
+font-family: "CeraStencilPRO-Regular";
+src: url("./CeraStencilPRO-Regular.ttf");
+}
 .header {
     height: 60px;
     width: 100%;
@@ -95,7 +103,7 @@ font-size: 23px;
 .row {
     display: flex;
     flex-direction: row;
-    margin-left: 640px;
+    margin-left: 600px;
     gap: 20px;
 }
 
