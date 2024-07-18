@@ -693,3 +693,126 @@ src: url("./CeraStencilPRO-Regular.ttf");
     display: flex;
     gap: 20px;
 }
+.dashBoard{
+    display: flex;
+    flex-direction: column;
+}
+.dashBoard-body{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 20px;
+}
+.body-left{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    margin-left: 30px;
+    left: 0;
+    /* position: fixed; */
+    top: 100px;
+    width: 200px;
+    z-index: 1;
+    height: 100%;
+    
+}
+.merch-profile{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid black;
+    /* position: fixed; */
+    z-index: 3;
+    width: 200px;
+}
+.merch-profile img{
+    border-radius: 40px;
+    width: 80px;
+    margin-bottom: 20px;
+   
+}
+.merch-menu{
+    top: 300px;
+    height: 70%;
+    width: 200px;
+    position: fixed; 
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+.body-right{
+    top: 200px;
+    right: 20px;
+    background-color: rgb(252, 252, 250);
+    position: absolute;
+    height: 75%;
+    width: 80%;
+    z-index: 3;
+}
+.merch-regBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+.form-group{
+
+}
+.form-row{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.form-row .group1, .form-row .group2{
+    display: flex;
+    flex-direction: column;
+}
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 43%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.registration-form h2 {
+    margin-bottom: 15px;
+}
+.registration-form .form-group {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.registration-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.registration-form .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.registration-form .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.registration-form .form-group .error {
+    color: tomato;
+    font-size: 0.9em;
+}
+.registration-form .submit-btn {
+    width: 30%;
+    padding: 10px;
+    background: #00aeff;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
