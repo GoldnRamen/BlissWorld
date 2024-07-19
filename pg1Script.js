@@ -165,19 +165,74 @@ $(document).ready(function() {
           dots: true,
           slidesToScroll: 1,       
     })
-    function shu(){
-     var value = parseInt($("#B-quanInput").text())
-     console.log(value)
-     // increment = value + 1
-     // console.log(increment)
-     $("#B-quanInput").text(value + 1)
-    }
-    $("#subB").click(function(){ 
-      shu()
-    })
-    $("#addB").click(function(){
+    ////////////////////////////////////////////
+
+   let inputValue = $("#B-quanInput").val()
+   $("#addB").click(function(){
+     inputValue++
+     console.log(inputValue)
+     $("#B-quanInput").text(`${inputValue}`)
+   })
+   $("#subB").click(function(){
+     inputValue--
+     console.log(inputValue)
+     $("#B-quanInput").text(`${inputValue}`)
+   })
+   
     //////////////////////////////////////////////
+   $(".collapseBtn").hide()
+   $(".conten").hide()
+
+    $("#showB1").click(
+     function(){
+          $("#showB1").hide()
+          $("#collB1").show()
+          $("#conten1").toggle()          
     })
+    $("#collB1").click(
+     function(){
+          $("#showB1").show()
+          $("#collB1").hide()
+          $("#conten1").toggle()          
+    })
+    $("#showB2").click(
+     function(){
+          $("#showB2").hide()
+          $("#collB2").show()
+          $("#conten2").toggle()          
+    })
+    $("#collB2").click(
+     function(){
+          $("#showB2").show()
+          $("#collB2").hide()
+          $("#conten2").toggle()          
+    })
+    $("#showB3").click(
+     function(){
+          $("#showB3").hide()
+          $("#collB3").show()
+          $("#conten3").toggle()          
+    })
+    $("#collB3").click(
+     function(){
+          $("#showB3").show()
+          $("#collB3").hide()
+          $("#conten3").toggle()          
+    })
+    $("#showB4").click(
+     function(){
+          $("#showB4").hide()
+          $("#collB4").show()
+          $("#conten4").toggle()          
+    })
+    $("#collB4").click(
+     function(){
+          $("#showB4").show()
+          $("#collB4").hide()
+          $("#conten4").toggle()          
+    })
+
+    ////////////////////////////////////////////////
     $("#prodDetail1").hover(
           function(){
                $("#cart1").fadeIn()
@@ -557,79 +612,5 @@ $(document).ready(function() {
           window.location.href = "page2.html"
      })
      /////////////////////////////////////////////
-     $('#registrationForm').submit(function(event) {
-          event.preventDefault();
-          let valid = true;
-
-          // Clear previous errors
-          $('.error').text('');
-
-          // Validate first name
-          if ($('#firstName').val().trim() === '') {
-              $('#firstNameError').text('First Name is required');
-              valid = false;
-          }
-
-          // Validate last name
-          if ($('#lastName').val().trim() === '') {
-              $('#lastNameError').text('Last Name is required');
-              valid = false;
-          }
-
-          // Validate email
-          const email = $('#email').val().trim();
-          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (email === '') {
-              $('#emailError').text('Email is required');
-              valid = false;
-          } else if (!emailPattern.test(email)) {
-              $('#emailError').text('Invalid email format');
-              valid = false;
-          }
-
-          // Validate phone number
-          const phone = $('#phone').val().trim();
-          const phonePattern = /^\d{11,}$/;
-          if (phone === '') {
-              $('#phoneError').text('Phone Number is required');
-              valid = false;
-          } else if (!phonePattern.test(phone)) {
-              $('#phoneError').text('Invalid phone number');
-              valid = false;
-          }
-          // For Store Name
-          if ($('#storeName').val().trim() === '') {
-               $('#storeNameError').text('Store Name is required');
-               valid = false;
-           }
-
-          // Validate password
-          const password = $('#password').val();
-          const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-          if (password === '') {
-              $('#passwordError').text('Password is required');
-              valid = false;
-          } else if (!passwordPattern.test(password)) {
-              $('#passwordError').text('Password must contain letters and numbers');
-              valid = false;
-          }
-
-          const password2 = $('#secPassword').val();
-          if(password2 !== password){
-               $('#secPasswordError').text("Passwords don't match!");
-               valid = false;
-          }
-
-          if (valid) {
-              alert('Form submitted successfully');
-              let firstname = $("#firstName").val
-              let surname = $("#lastName").val
-              $("#merchantName").text(`${firstname}` + `${surname}`)
-          //     $(".form-row input").val("")
-              window.location.href = "dashboard.html"
-              
-
-              // Perform form submission or further processing here
-          }
-      });
+     
 })

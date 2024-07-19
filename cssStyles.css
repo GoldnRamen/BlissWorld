@@ -402,10 +402,11 @@ src: url("./CeraStencilPRO-Regular.ttf");
     align-items: center;
     margin: 20px 0;
 }
-.B-quantity input{
+.B-quantity h4{
     border: none;
     background-color: transparent;
     width: 10px;
+    margin: 0;
 }
 .B-quantity button{
     border: none;
