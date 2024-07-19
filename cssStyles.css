@@ -320,7 +320,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
 .B-head{
     display: grid;
     grid-template-columns: 1fr 3fr 2fr;
-    margin: 100px 10%;       
+    margin: 100px 5%;       
     justify-content: center;
     gap: 30px;
 }
@@ -494,7 +494,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
 .B-ratings{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
-    gap: 10px;
+    /* gap: 10px; */
     margin-bottom: 20px;
 }
 .B-left{
