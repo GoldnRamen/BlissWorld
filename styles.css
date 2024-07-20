@@ -476,3 +476,41 @@ cursor: pointer;
 .visible{
     display: block;
 }
+
+.log {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.log h2 {
+    margin-top: 0;
+}
+.log p {
+    margin-bottom: 0px;
+}
+.log input[type="text"],
+.log input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.log button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.log .error{
+    text-align: left;
+    color: tomato;
+    font-size: .8rem;
+}

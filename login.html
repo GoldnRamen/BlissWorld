@@ -9,54 +9,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="header">
-        <a href="">
-            <p>Free shipping on U.S orders $50+. Free Returns.International Shipping !</p>
-        </a>
-    </div>
     <div class="header2">
         <div class="head_content">
             <div class="head_content1">
                 <!-- <div id="head_img"> -->
                     <div>
-                        <a href="index.html"><img src="./images/Bliss_Logo_White_3x_6c3396d6-15e0-4c23-a933-633783887842_140x.png" alt="" style=" width: 100%; cursor: pointer;"></a>
+                        <img src="./images/Bliss_Logo_White_3x_6c3396d6-15e0-4c23-a933-633783887842_140x.png" alt="">
                     </div>
                 <!-- </div> -->
                 
-                    <div class="row">
-                        <img src="./images/search-interface-symbol.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
-                    
-                    
-                        <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
-            
-                
-                        <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
-                    </div>
-                
-
-
+                   
             </div>
+            
         </div>
+        
+        
 
     </div>
   
 
     <div class="log">
+        <form action="" id="loginForm">
+            <h2>LOGIN</h2>
+            <p>Please enter your e-mail and password:</p>
+            <br>
+            <input type="text"  placeholder="Email" id="email"><br>
+            <p id="emailErr" class="error"></p>
+            <br>
+            <input id="password" placeholder="Password" type="password">
+            <p id="passwordErr" class="error"></p>
+            <br>
+            <p>forgot password?</p>
+            <br>
+            <button id="btn" type="submit">LOGIN</button>
+            <br>
+            <p>Don't have an account? <a href="register.html"><span>Create One</span></a></p>
+        </form>
         
-        <h2>LOGIN</h2>
-        <p>Please enter your e-mail and password:</p>
-        <input type="text"  placeholder="Email" id="email"><br><br>
-        <p id="emailErr"></p>
-        <input id="password" placeholder="Password" type="password"> <p id="passwordErr"></p>
-        <p>forgot password?</p>
-       
-        <button id="btn">LOGIN</button>
-        <p>Don't have an account? <a href="register.html"><span>Create One</span></a></p>
 
 
     </div>

@@ -15,12 +15,13 @@ body {
     width: 100%;
     text-align: center;
     padding-top: 80px;
+    margin-bottom: 100px;
 }
 .log h2{
     font-size: 30px;
 }
 .log p{
-    color: rgb(124, 120, 120)
+    /* color: rgb(124, 120, 120) */
 }
 .log p span{
     cursor: pointer;

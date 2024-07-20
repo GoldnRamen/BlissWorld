@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
@@ -47,23 +48,25 @@
   
 
     <div class="log">
-        
-        <h2>MERCHANT LOGIN</h2>
-        <p>Please enter your e-mail and password:</p>
-        <input type="text"  placeholder="Email" id="merchEmail"><br><br>
-        <p id="merchEmailErr"></p>
-        <input id="merchPassword" placeholder="Password" type="password">
-        <p id="merchPasswordErr"></p>
-        <p>forgot password?</p>
-       
-        <button id="merchBtn">LOGIN</button>
-        <p>Don't have an account? <a href="merchantReg.html"><span>Create One</span></a></p>
-
-
+        <form id="merchLogin">
+            <h2>MERCHANT LOGIN</h2>
+            <p>Please enter your e-mail and password:</p>
+            <br>
+            <div class="form-group">
+                <input type="email" placeholder="Email" id="merchEmail" required>
+                <p id="merchEmailErr" class="error"></p>
+            </div>
+            <br>
+            <div class="form-group">
+                <input id="merchPassword" placeholder="Password" type="password" required>
+                <p id="merchPasswordErr" class="error"></p>
+            </div>
+            <br>
+            <p><a href="#">Forgot password?</a></p>
+            <button type="submit" id="merchBtn">LOGIN</button>
+            <p>Don't have an account? <a href="merchantReg.html"><span>Create One</span></a></p>
+        </form>
     </div>
-
-
-
 
     <div class=".prod_3_cont"
         style="background-color:#e8f6f9; background-color: rgb(232,246,249); height: 400px; padding-top: 30px;">
