@@ -1,4 +1,5 @@
 $(document).ready(function (){
+    const api_name = "http://ecommerce.reworkstaging.name.ng/v2"
     $(document).ready(function() {
         $("#loginForm").on("submit", function(e) {
             e.preventDefault();
@@ -31,8 +32,33 @@ $(document).ready(function (){
             }
     
             if (valid) {
+                let user_loginData = {
+                    "email": email,
+                    "password": password
+                }
+                $.ajax({
+                    url: `${api_name}/users/login`,
+                    method: 'POST',
+                    data: user_loginData,
+                    success: function(res) {
+                        console.log(res);
+                        if (res.code === 404) {
+                            alert("Error 404, Check your details again");
+                        } else {
+                            alert("Login successful");
+                            window.location.href = "index.html";
+                            $("#user-welcome").append(
+                                `<p>Welcome ${user_loginData.email}</p>`
+                            )
+                            console.log("Howdy")
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        alert("An error occurred. Please try again.");
+                    }
+                })
                 // Redirect to the index page if validation passes
-                location.href = 'index.html';
             }
         });
     });
@@ -71,9 +97,31 @@ $(document).ready(function (){
 
         // If form is valid, submit the form
         if (valid) {
-            alert("Form submitted successfully!");
-            this.submit();
-            window.location.href = "dashboard.html"
+            let merchantLog_Data = {
+                "email": email,
+                "password": password
+            }
+            $.ajax({
+                url: `${api_name}/merchants/login`,
+                method: "POST",
+                data: merchantLog_Data,
+                success: function(res){  
+                    console.log(res) 
+                    if(res.code === 404){
+                        alert("Error 404, Check your details again");
+                    }
+                    else{
+                        alert("Merchant Logged in Successfully");
+                        window.location.href = "dashboard.html"
+                        console.log('Success',res)
+                        localStorage.setItem('merchantLog_Data', JSON.stringify(res))   
+                    }
+                },    
+                error: function(err) {
+                    console.log(err);
+                    alert("An error occurred. Please try again.");
+                }
+            })
         }
     });
 })

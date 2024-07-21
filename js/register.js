@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    const api_name =  "http://ecommerce.reworkstaging.name.ng/v2"
+
     $('#registerForm').on('submit', function (e) {
         e.preventDefault();
         let valid = true;
@@ -9,6 +11,7 @@ $(document).ready(function(){
         const regSurnameErr = $('#regSurnameErr');
         const regEmail = $('#regEmail').val();
         const regEmailErr = $('#regEmailErr');
+        const regPhone = $('#regPhone').val();
         const regPassword = $('#regPassword').val();
         const regPasswordErr = $('#regPasswordErr');
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -31,6 +34,14 @@ $(document).ready(function(){
             valid = false;
             regEmailErr.text('Enter a valid email');
         }
+        
+        if (regPhone === "") {
+            $('#regPhoneErr').text('Phone Number cannot be empty');
+            valid = false;
+        } else if (!/^\d{11}$/.test(regPhone)) {
+            $('#regPhoneErr').text('Phone number must be 11 numbers');
+            valid = false;
+        }
         if(regPassword === ""){
             valid = false;
             regPasswordErr.text('Password cannot be empty');
@@ -40,8 +51,37 @@ $(document).ready(function(){
         }
 
         if(valid) {
-            alert("Registration is successful. Login now");
-            location.href = 'login.html';
+            // Store the data in local storage
+            let user_regData = {
+                "first_name": regFirstname,
+                "last_name": regSurname,
+                "email": regEmail,
+                "phone": regPhone,
+                "password": regPassword
+            }
+            $.ajax({
+                method:"POST",
+                url: `${api_name}/users`,
+                data: user_regData,
+                success: function(res){  
+                    console.log(res) 
+                    if(res.code === 404){
+                        alert("Error 404, Check your details again");
+                    }
+                    else{
+                        alert("Registered User Successfully");
+                        window.location.href = "login.html"
+                        console.log('Success',res)
+                        localStorage.setItem('user_regData', JSON.stringify(res))
+                        
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                    alert("An error occurred. Please try again.");
+                }
+            })
+           
         }
     });
 
@@ -96,13 +136,17 @@ $(document).ready(function(){
         }
 
         // Validate Description
-        // let description = $('#description').val();
+        let description = $('#description').val();
         // if (description === "") {
             
         //     valid = false;
         // }
 
         // Validate Password
+        let icon = $("#icon").val()
+        let banner = $("#banner").val()
+        let other_phones = $("#otherPhones").val()
+
         let password = $('#password').val();
         let secPassword = $('#secPassword').val();
         if (password === "") {
@@ -123,8 +167,41 @@ $(document).ready(function(){
 
         // If form is valid, submit the form
         if (valid) {
-            alert("Registeration is successful. You can login now merchant.")
-            window.location.href = "merchantLog.html"
+            let merchant_regData = {
+                "first_name": firstName,
+                "last_name": lastName,
+                "email": email,
+                "phone": phone,
+                "store_name": storeName,
+                "descp": description,
+                "icon": icon,
+                "banner": banner,
+                "phones": other_phones,
+                "password": password
+            };
+            $.ajax({
+                url: `${api_name}/merchants`,
+                method: "POST",
+                data: merchant_regData,
+                success: function(res){  
+                    console.log(res) 
+                    if(res.code === 404){
+                        alert("Error 404, Check your details again");
+                    }
+                    else{
+                        alert("Registered Merchant Successfully");
+                        window.location.href = "merchantLog.html"
+                        console.log('Success',res)
+                        localStorage.setItem('merchant_regData', JSON.stringify(res))
+                        
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                    alert("An error occurred. Please try again.");
+                }
+
+            })
         }
     });
 });   
