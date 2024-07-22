@@ -613,5 +613,17 @@ $(document).ready(function() {
      })
      /////////////////////////////////////////////
      
-     
+     $('#B-cart').on('click', function() {
+          var Content = $("#prodtext").html();
+          var image = $("#prodimage").html()
+
+          $('#carttext').html(Content);
+          var newImageSrc = $('#B-productSlider img').first().attr('src');
+                $('.cart-image').attr('src', newImageSrc);
+
+      });
+
+      //////////////////////////////////////////////////////
+
+      
 })

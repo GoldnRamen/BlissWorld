@@ -618,6 +618,9 @@ src: url("./CeraStencilPRO-Regular.ttf");
 .flex{
     display: flex;
 }
+.block{
+    display: block;
+}
 .squaregap{
     gap: 1px;
 }
@@ -748,10 +751,30 @@ src: url("./CeraStencilPRO-Regular.ttf");
     top: 200px;
     right: 20px;
     background-color: rgb(252, 252, 250);
-    position: absolute;
+    position: fixed;
     height: 75%;
     width: 80%;
     z-index: 3;
+    overflow-y: scroll;
+    
+}
+#createForm{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 200px;
+}
+#createForm div{
+    border-bottom: 1px solid rgb(51, 49, 49);
+    padding: 10px;    
+}
+
+#createForm div input[type="text"]{
+    width: 250px;
+    height: 60px;
+    border: none;
+    border-bottom: 3px solid rgb(88, 4, 4);
 }
 .merch-regBody {
     display: flex;
