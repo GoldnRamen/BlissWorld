@@ -6,7 +6,8 @@ $(document).ready(function(){
     $("#merchantLogout").click(function(){
         window.location.href = "merchantLog.html"
     })
-    $("#submitProduct").click(function(){
+    $("#submitProduct").click(function(e){
+        e.preventDefault()
         
         var title = $("#productName").val()
         var descp = $("#productDescp").val()
@@ -17,6 +18,73 @@ $(document).ready(function(){
         var currency = $("#productCurrency").val()
         var min_qty = $("#productMinQuantity").val()
         var max_qty = $("#productMaxQuantity").val()
+
+        var titleErr = $('#productNameErr');
+        var descpErr = $("#productDescpErr");
+        var priceErr = $("#productPriceErr");
+        var brandErr = $("#brandNameErr");
+        var quantityErr = $("#productQuantityErr");
+        var imagesErr = $("#productImageErr");
+        var currencyErr = $("#productCurrencyErr");
+        var min_qtyErr = $("#productMinQuantityErr");
+        var max_qtyErr = $("#productMaxQuantityErr");
+
+
+        if(title == ""){
+            titleErr.text("title cannot be empty")
+        }
+        else{
+            titleErr.text("")
+        }
+        if(descp == ""){
+            descpErr.text("product description cannot be empty")
+        }
+        else{
+            descpErr.text("")
+        }
+        if(price == ""){
+            priceErr.text('please enter a valid price')
+        }
+        else{
+            priceErr.text("")
+        }
+        if(brand == ""){
+            brandErr.text('brand name cannot be empty')
+        }
+        else{
+            brandErr.text("")
+        }
+        if (quantity == ""){
+            quantityErr.text('please select a quantity')
+        }
+        else{
+            quantityErr.text("")
+        }
+        if(images == ""){
+            imagesErr.text('please upload a product image')
+        }
+        else{
+            imagesErr.text("")
+        }
+        if(currency == ""){
+            currencyErr.text('please select your currency')
+        }
+        else{
+            currencyErr.text("")
+        }
+        if(min_qty == ""){
+            min_qtyErr.text('minimum quantity cannot be empty')
+        }
+        else{
+            min_qtyErr.text("")
+        }
+        if(max_qty == ""){
+        max_qtyErr.text('maximum quantity cannot be empty')
+    }else{
+        max_qtyErr.text("")
+    }
+
+        
         
             alert("Success")
             var productData = {
