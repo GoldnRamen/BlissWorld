@@ -96,9 +96,6 @@ $(document).ready(function(){
     $("#merchantLogout").click(function(){
         window.location.href = "merchantLog.html"
     })
-    $("#submitProduct").click(function(e){
-        e.preventDefault()
-        
 
     $("#productRefundText").text("false");
     $("#productDiscount2Text").text("false");
@@ -151,105 +148,45 @@ $(document).ready(function(){
         console.log($(this).is(':checked')); 
     })
 
-    
-        
-    $("#otherBtn").click(function(){
-        $("#otherDrop").toggleClass("none, block")
-    })
-    
-    $("#createForm").on("submit", function(e){
+
+    $("#submitProduct").click(function(e){
         e.preventDefault()
-        let valid = true
-        var title = $("#productName").val()
-        var descp = $("#productDescp").val()
-        var price = $("#productPrice").val()
-        var brand = $("#brandName").val()
-        var quantity = $("#productQuantity").val()
-        var images = $("#productImage").val()
-        var currency = $("#productCurrency").val()
-        var min_qty = $("#productMinQuantity").val()
-        var max_qty = $("#productMaxQuantity").val()
 
-        var titleErr = $('#productNameErr');
-        var descpErr = $("#productDescpErr");
-        var priceErr = $("#productPriceErr");
-        var brandErr = $("#brandNameErr");
-        var quantityErr = $("#productQuantityErr");
-        var imagesErr = $("#productImageErr");
-        var currencyErr = $("#productCurrencyErr");
-        var min_qtyErr = $("#productMinQuantityErr");
-        var max_qtyErr = $("#productMaxQuantityErr");
-
-
-        if(title == ""){
-            titleErr.text("title cannot be empty")
-        }
-        else{
-            titleErr.text("")
-        }
-        if(descp == ""){
-            descpErr.text("product description cannot be empty")
-        }
-        else{
-            descpErr.text("")
-        }
-        if(price == ""){
-            priceErr.text('please enter a valid price')
-        }
-        else{
-            priceErr.text("")
-        }
-        if(brand == ""){
-            brandErr.text('brand name cannot be empty')
-        }
-        else{
-            brandErr.text("")
-        }
-        if (quantity == ""){
-            quantityErr.text('please select a quantity')
-        }
-        else{
-            quantityErr.text("")
-        }
-        if(images == ""){
-            imagesErr.text('please upload a product image')
-        }
-        else{
-            imagesErr.text("")
-        }
-        if(currency == ""){
-            currencyErr.text('please select your currency')
-        }
-        else{
-            currencyErr.text("")
-        }
-        if(min_qty == ""){
-            min_qtyErr.text('minimum quantity cannot be empty')
-        }
-        else{
-            min_qtyErr.text("")
-        }
-        if(max_qty == ""){
-        max_qtyErr.text('maximum quantity cannot be empty')
-    }else{
-        max_qtyErr.text("")
-    }
-
-        
-        
-            alert("Success")
-        var discount = $("#productDiscount").val()
-        var refund_policy = $("#productRefundText").text()
-        var discount2 = $("#productDiscount2Text").text()
-        var shipment = $("#productShippingText").text()
-        var shipping_locations = [$("#locationTextN").text(), $("#locationTextG").text(), $("#locationTextS").text()]
-        var productOrigin = $("#productOrigin").val()
-        var productBrandName = $("#productBrandName").val()
-        var productMidsoleCategory = $("#productMidsoleCategory").val()
-        var productSeason = $("#productSeason").val()
-        var productGender = $("#productGender").val()
-        var productSupplyAbility = $("#productSupplyAbility").val()
-
+        $("#createForm").on("submit", function(e){
+            e.preventDefault()
+            let valid = true
+    
+            var titleErr = $('#productNameErr');
+            var descpErr = $("#productDescpErr");
+            var priceErr = $("#productPriceErr");
+            var brandErr = $("#brandNameErr");
+            var quantityErr = $("#productQuantityErr");
+            var imagesErr = $("#productImageErr");
+            var currencyErr = $("#productCurrencyErr");
+            var min_qtyErr = $("#productMinQuantityErr");
+            var max_qtyErr = $("#productMaxQuantityErr");
+            
+            var title = $("#productName").val()
+            var descp = $("#productDescp").val()
+            var price = $("#productPrice").val()
+            var brand = $("#brandName").val()
+            var quantity = $("#productQuantity").val()
+            var images = $("#productImage").val()
+            var currency = $("#productCurrency").val()
+            var min_qty = $("#productMinQuantity").val()
+            var max_qty = $("#productMaxQuantity").val()
+            var discount = $("#productDiscount").val()
+            var refund_policy = $("#productRefundText").text()
+            var discount2 = $("#productDiscount2Text").text()
+            var shipment = $("#productShippingText").text()
+            var shipping_locations = [$("#locationTextN").text(), $("#locationTextG").text(), $("#locationTextS").text()]
+            var productOrigin = $("#productOrigin").val()
+            var productBrandName = $("#productBrandName").val()
+            var productMidsoleCategory = $("#productMidsoleCategory").val()
+            var productSeason = $("#productSeason").val()
+            var productGender = $("#productGender").val()
+            var productSupplyAbility = $("#productSupplyAbility").val()
+    
             var productData = {
                 "title": title,
                 "descp": descp,
@@ -301,32 +238,83 @@ $(document).ready(function(){
                 "category_id": "",
                 "merchant_id": merchant
             }
+    
+    
+            if(title == ""){
+                valid = false
+                titleErr.text("title cannot be empty")
+            }
+            if(descp == ""){
+                valid = false
+                descpErr.text("product description cannot be empty")
+            }
+            if(price == ""){
+                valid = false
+                priceErr.text('please enter a valid price')
+            }
             
-            $.ajax({
-                method: "POST",
-                url: `${api_name}/:products`,
-                // contentType: 'application/json',
-                data: JSON.stringify(productData),
-                success: function(res){  
-                    console.log(res)
-                    if(res.code === 404){
-                        alert("Error 404, Check your details again");
+            if(brand == ""){
+                valid = false
+                brandErr.text('brand name cannot be empty')
+            }
+            if (quantity == ""){
+                valid = false
+                quantityErr.text('please select a quantity')
+            }
+            if(images == ""){
+                valid = false
+                imagesErr.text('please upload a product image')
+            }
+            if(currency == ""){
+                valid = false
+                currencyErr.text('please select your currency')
+            }
+            if(min_qty == ""){
+                valid = false
+                min_qtyErr.text('minimum quantity cannot be empty')
+            }
+            if(max_qty == ""){
+                valid = false
+            max_qtyErr.text('maximum quantity cannot be empty')
+            }
+            else{
+                valid = true
+                $.ajax({
+                    method: "POST",
+                    url: `${api_name}/:products`,
+                    // contentType: 'application/json',
+                    data: JSON.stringify(productData),
+                    success: function(res){  
+                        console.log(res)
+                        if(res.code === 404){
+                            alert("Error 404, Check your details again");
+                        }
+                        else{
+                            alert("Posted Product Successfully");
+                            window.location.href = "page1.html"
+                            console.log('Success with posting product',res)
+                            localStorage.setItem('productData', JSON.stringify(res))                
+                        } 
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        alert("An error occurred. Please try again.");
                     }
-                    else{
-                        alert("Posted Product Successfully");
-                        window.location.href = "page1.html"
-                        console.log('Success with posting product',res)
-                        localStorage.setItem('productData', JSON.stringify(res))                
-                    } 
-                },
-                error: function(err) {
-                    console.log(err);
-                    alert("An error occurred. Please try again.");
-                }
-            })
+                })
+            }
+            
+        })
+    })    
+
+
+
+    
         
-        
+    $("#otherBtn").click(function(){
+        $("#otherDrop").toggleClass("none, block")
     })
+    
+    
 
     $("#createCategory").click(function(){
         $("#categoryPage").toggleClass("none block")
