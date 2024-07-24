@@ -88,39 +88,58 @@
                             <br>
                             <div>
                                 <input type="text" placeholder="Enter product name" id="productName">
+                                <p class="Errr" id="productNameErr"></p>
                             </div>
                             
                             <div>
                                 <input type="text" placeholder="Enter product description" id="productDescp">
+                                <p class="Errr" id="productDescpErr"></p>
                             </div>
                             
                             <div>
                                 <input type="text" placeholder="Enter product price" name="" id="productPrice">
+                                <p class="Errr"  id="productPriceErr"></p>
                             </div>
                             
                             <div>
                                 <input type="text" placeholder="Enter product brand" name="" id="brandName">
+                                <p class="Errr"  id="brandNameErr"></p>
                             </div>
                             
                             <div>
                                 <input type="number" placeholder="Enter product quantity" name="" id="productQuantity">
+                                <p class="Errr"  id="productQuantityErr"></p>
                             </div>
                             
                             <div style="display: flex; flex-direction: column; gap: 10px;">
                                 <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's image</label>
                                 <input type="file" id="productImage">
+                                <p class="Errr"  id="productImageErr"></p>
                             </div>
                             
-                            <div>                               
-                                <input type="text" placeholder="Enter product currency" id="productCurrency">
+                            <div style="display: flex; gap: 40px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's currency</label>
+                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                    <p style="margin: 0;">Naira</p>
+                                    <input type="checkbox" id="productCurrencyNaira">
+                                    <p class="Errr"  id="productCurrencyErr"></p>
+                                </div>
+                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                    <p style="margin: 0;">Dollars</p>
+                                    <input type="checkbox" id="productCurrencyDollars">
+                                    <p class="Errr"  id="productCurrencyErr"></p>
+                                </div>
+                                
                             </div>
                             
                             <div>
                                 <input type="number" placeholder="Enter product minimum-quantity" name="" id="productMinQuantity">
+                                <p class="Errr"  id="productMinQuantityErr"></p>
                             </div>
                             
                             <div>
                                 <input type="number" placeholder="Enter product maximum-quantity" name="" id="productMaxQuantity">
+                                <p class="Errr"  id="productMaxQuantityErr"></p>
                             </div>
                             
                             <div>
