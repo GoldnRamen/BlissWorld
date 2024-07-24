@@ -78,15 +78,15 @@ $(document).ready(function (){
     
        
             if (old_password === "") {
-                old_passwordErr.text('Password cannot be empty');
+                old_passwordErr.text('Oldpassword cannot be empty');
                 valid = false;
          
             } else if (old_password.length < 8) {
-                old_passwordErr.text('Password cannot be less than 8 characters');
+                old_passwordErr.text('assword cannot be less than 8 characters');
                 valid = false;
             }
             if (new_password === "") {
-                new_passwordErr.text('Password cannot be empty');
+                new_passwordErr.text('Newpassword cannot be empty');
                 valid = false;
          
             } else if (new_password.length < 8) {
