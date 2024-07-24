@@ -68,7 +68,11 @@
                     <div class="merch-menu">
                         <p id="createProd" style="cursor: pointer;">Create Product</p>
                         <hr>
-                        <p id="editProd">Edit Product</p>
+                        <p id="editProd" style="cursor: pointer;">Edit Merchant Details</p>
+                        <hr>
+                        <p id="createCategory" style="cursor: pointer;">Create a new Category</p>
+                        <hr>
+                        <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
                         <hr>
                         <p id="merchantLogout">Log Out</p>
                         <hr>
@@ -107,17 +111,8 @@
                                 <input type="file" id="productImage">
                             </div>
                             
-                            <div style="display: flex; gap: 40px;">
-                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's currency</label>
-                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
-                                    <p style="margin: 0;">Naira</p>
-                                    <input type="checkbox" id="productCurrencyNaira">
-                                </div>
-                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
-                                    <p style="margin: 0;">Dollars</p>
-                                    <input type="checkbox" id="productCurrencyDollars">
-                                </div>
-                                
+                            <div>                               
+                                <input type="text" placeholder="Enter product currency" id="productCurrency">
                             </div>
                             
                             <div>
@@ -132,24 +127,27 @@
                                 <input type="text" placeholder="Enter product discount" name="" id="productDiscount">
                             </div>
                             
-                            <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                            <!-- <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
                                 <label for="" style="border-bottom: .5px solid black; width: fit-content;">Select product discount expiration date</label>
                                 <input type="date" name="" id="productDiscountDate">
-                            </div>
+                            </div> -->
                             
                             <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
                                 <label for="" style="border-bottom: .5px solid black; width: fit-content;">Refund available</label>
                                 <input type="checkbox" id="productRefund">
+                                <p id="productRefundText"></p>
                             </div>
                             
                             <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
                                 <label for="" style="border-bottom: .5px solid black; width: fit-content;">Discount available</label>
                                 <input type="checkbox" id="productDiscount2">
+                                <p id="productDiscount2Text"></p>
                             </div>
                             
                             <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
                                 <label for="" style="border-bottom: .5px solid black; width: fit-content;">Shipping available</label>
                                 <input type="checkbox" id="productShipping">
+                                <p id="productShippingText"></p>
                             </div>
                             
                             <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
@@ -157,20 +155,34 @@
                                 <div style="display: flex; gap: 50px;">
                                     <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
                                         <p style="margin: 0;">Nigeria</p>
-                                        <input type="checkbox" id="">
+                                        <input type="checkbox" id="nigeria">
                                     </div>
                                     <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
                                         <p style="margin: 0;">Ghana</p>
-                                        <input type="checkbox" id="">
+                                        <input type="checkbox" id="ghana">
                                     </div>
                                     <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
                                         <p style="margin: 0;">South Africa</p>
-                                        <input type="checkbox" id="">
+                                        <input type="checkbox" id="south_africa">
                                     </div>
                                 </div>
-                                
+                                <p id="locationTextN"></p>
+                                <p id="locationTextG"></p>
+                                <p id="locationTextS"></p>
                             </div>
-                            
+
+                            <div class="display: flex; flex-direction: column">
+                                <label for="" id="otherBtn">Other</label>
+                               <div class="none" id="otherDrop" style="flex-direction: column; gap: 50px; cursor: pointer;">
+                                <input type="text" placeholder="Place of Origin" id="productOrigin">
+                                <input type="text" placeholder="Brand Name" id="productBrandName">
+                                <input type="text" placeholder="Midsole Category" id="productMidsoleCategory">
+                                <input type="text" placeholder="Season" id="productSeason">
+                                <input type="text" placeholder="Gender" id="productGender">
+                                <input type="text" placeholder="Supply Ability" id="productSupplyAbility">
+                               </div>
+                            </div>
+
                             <div>
                                 <input type="text" placeholder="Enter Product Category ID" id="">
                             </div>
@@ -181,6 +193,96 @@
                             
                             <button id="submitProduct" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
                         </form>
+                    </div>
+                    <div class="createPage none" id="editPage">
+                        <form action="" id="editForm">
+                            <label for="" style="text-align: center;"><h1>Edit Merchant Details</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div>
+                                <input type="text" placeholder="Enter your first name" id="editFirstName">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your surname" id="editLastName">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your email" id="editEmail">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your phone number" name="" id="editPhoneNumber">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter store name" name="" id="editStoreName">
+                            </div>
+
+                            <div>
+                                <input type="text" placeholder="Enter description" name="" id="editDescription">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your icon</label>
+                                <input type="file" id="editIcon">
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your banner</label>
+                                <input type="file" id="editBanner">
+                            </div>
+                            
+                            <div>                               
+                                <input type="text" placeholder="Enter your state" id="editState">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your district" id="editDistrict">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 20px;">
+                                <label for="" style="text-align: center; border: none; border-bottom: 1px solid black; width: fit-content;">Enter your Social Media Handles on the following platforms:</label>
+                                <div style="display: flex; gap: 30px;">
+                                    <input type="text" placeholder="Enter X handle" name="" id="xHandle">
+                                    <input type="text" placeholder="Enter FaceBook handle" name="" id="fbHandle">
+                                    <input type="text" placeholder="Enter Instagram handle" name="" id="inHandle">
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 30px;">
+                                <label for="" style="border-bottom: 1px solid black;">Enter phone numbers:</label>
+                                <textarea  style="border: none; border-bottom: 3px solid black;" placeholder="Enter phone numbers" id="editPhoneNumbers"></textarea>
+                            </div>
+
+                            <button id="submitEdit" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>
+                    <div class="createPage none" id="categoryPage">
+                        <form action="" id="categoryForm">
+                            <label for="" style="text-align: center;"><h1>Create Category</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div style="display: flex; gap: 50px;">
+                                <input type="text" placeholder="Enter merchant ID" id="catMerchName">
+                                <p id="merchId"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your category name" id="categoryName">
+                            </div>
+                            
+                           <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your category Image</label>
+                                <input type="file" id="categoryImage">
+                            </div>
+                            <button id="submitCategory" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>
+                    <div class="createPage none" id="allCategories" style="margin-top: 20px;">
+                        
                     </div>
                 </div>
             </div>
