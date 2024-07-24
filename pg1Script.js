@@ -590,8 +590,13 @@ $(document).ready(function() {
           $(this).show()
      })
 
+     // $(".A-disappearingCart").click(function(){
+     //      $(".blissCart").show()
+          // $('#overlay').toggleClass('visible')
+     // })
      $(".A-disappearingCart").click(function(){
-          $(".blissCart").show()
+          $("#ModalCover").show()
+          // $('#overlay').toggleClass('visible')
      })
      // $("#prodDetail1").click(function(){
      //      $("#cart1").removeProp("none")
@@ -602,6 +607,7 @@ $(document).ready(function() {
      })
      $("#cartClose").click(function(){
           $(".blissCart").hide()
+          // $('#overlay').toggleClass('visible')
      })
      
      $("#B-cart").click(function(){

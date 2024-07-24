@@ -61,6 +61,41 @@ $(document).ready(function (){
                 // Redirect to the index page if validation passes
             }
         });
+
+
+        $("#updateForm").on("submit", function(u) {
+            u.preventDefault();
+        let old_password = $('#oldPass').val();
+        let new_password = $('#newPass').val();
+        let old_passwordErr = $('#oldPassErr');
+        let new_passwordErr = $('#newPassErr');
+         
+            let valid = true;
+    
+            // Clear previous error messages
+            old_passwordErr.text('');
+            new_passwordErr.text('');
+    
+       
+            if (old_password === "") {
+                old_passwordErr.text('Password cannot be empty');
+                valid = false;
+         
+            } else if (old_password.length < 8) {
+                old_passwordErr.text('Password cannot be less than 8 characters');
+                valid = false;
+            }
+            if (new_password === "") {
+                new_passwordErr.text('Password cannot be empty');
+                valid = false;
+         
+            } else if (new_password.length < 8) {
+                new_passwordErr.text('Password cannot be less than 8 characters');
+                valid = false;
+            }else{
+                new_passwordErr.text('')
+            }
+        })
     });
     
     
