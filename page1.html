@@ -25,6 +25,16 @@
     font-family: "CeraStencilPRO-Regular";
     src: url("./CeraStencilPRO-Regular.ttf");
     }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 4;
+    }
     .blissCart{
         width: 600px;
         height: 650px;
@@ -336,6 +346,7 @@
     }
 </style>
 <body>
+    <div class="overlay"></div>
     <div class="header">
         <a href="">
             <p>Free shipping on U.S orders $50+. Free Returns.International Shipping !</p>
@@ -450,6 +461,13 @@
         </div>
         
         <div class="A-products">
+            <div class="Block1">
+                <div class="A-left">
+                    <div  id="allCategories">
+                        
+                    </div>              
+                </div>
+            </div>
             <div class="Block1">
                 <div class="A-left">
                     <div class="A-bestSeller"><h4>Best Seller</h4></div>
@@ -1286,6 +1304,10 @@
                         <h2>Sold Out</h2>
                     </div>
                 </div>
+                
+            </div>
+
+            <div class="Block1 mt" id="Block3">
                 
             </div>
             <div class="navigation">

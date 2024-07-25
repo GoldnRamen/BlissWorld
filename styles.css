@@ -19,7 +19,7 @@ body {
     background-color: rgb(211, 55, 211);
 }
 .log{
-    height: 650px;
+    height: 600px;
     width: 100%;
     text-align: center;
     padding-top: 80px;
@@ -46,10 +46,11 @@ body {
 .log button{
     color: black;
     background-color:  rgb(148, 220, 238);
-    width: 420px;
+    width: 200px;
     height: 40px;
     font-size: 20px;
     border: none;
+    margin-top: 50px;
 }
 .log p{
 font-size: 23px;

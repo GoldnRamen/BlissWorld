@@ -8,7 +8,14 @@ $(document).ready(function(){
     const imag = imageyyy.image
     const nameyyy = JSON.parse(localStorage.getItem("category_Data"))
     const nam = nameyyy.name
-    console.log("The user Id is", merchant)
+    const user_ID = JSON.parse(localStorage.getItem("userLog_Data"))
+    const USERID = user_ID.id
+    var produ = JSON.parse(localStorage.getItem("prodIDs"))
+    var prod = produ.id
+
+    $("#merchId").text(`${merchant}`)
+    $("#merchIdcreate").text(`${merchant}`)
+    console.log("The merchant Id is", merchant)
     console.log("The created categories are: ", categor)
     
     var merchname = merchantyyy.last_name
@@ -28,14 +35,6 @@ $(document).ready(function(){
     var editPhoneNumber = $("#editPhoneNumber").val()
     var editStoreName = $("#editStoreName").val()
     var editDescription = $("#editDescription").val()
-    var editIcon = $("#editIcon").val()
-    var editBanner = $("#editBanner").val()
-    var editState = $("#editState").val()
-    var editDistrict = $("#editDistrict").val()
-    var X = $("#xHandle").val()
-    var FB = $("#fbHandle").val()
-    var Insta = $("#inHandle").val()
-    // let editSocials = [$("#xHandle").val(), $("#fbHandle").val(), $("#inHandle").val()]
     let editPhoneNumbers = [$("#editPhoneNumbers")]
 
 
@@ -61,8 +60,8 @@ $(document).ready(function(){
             "phones":editPhoneNumbers
         }
         $.ajax({
-            method: "PUT",
             url: `${api_name}/merchants/${merchant}`,
+            method: "PUT",
             contentType: 'application/json',
             data: updatedMerchant_Info,
             success: function(res) {
@@ -109,7 +108,14 @@ $(document).ready(function(){
         }
         console.log($(this).is(':checked')); // Logs true or false
     })
-    
+    $("#productCurrencyNaira").change(function(){
+        if ($(this).is(':checked')) {
+            $("#productCurrency").text("Naira");
+        } else {
+            $("#productDiscount2Text").text("Dollars");
+        }
+        console.log("Currency: ", $(this).is(':checked')); // Logs true or false
+    })
     $("#productDiscount2").change(function(){
         if ($(this).is(':checked')) {
             $("#productDiscount2Text").text("true");
@@ -149,177 +155,248 @@ $(document).ready(function(){
     })
 
 
-    $("#submitProduct").click(function(e){
+    // $("#submitProduct").click(function(e){
+    //     e.preventDefault()
+
+       
+    // }) 
+    
+    $("#createForm").on("submit", function(e){
         e.preventDefault()
+        let valid = true
 
-        $("#createForm").on("submit", function(e){
-            e.preventDefault()
-            let valid = true
-    
-            var titleErr = $('#productNameErr');
-            var descpErr = $("#productDescpErr");
-            var priceErr = $("#productPriceErr");
-            var brandErr = $("#brandNameErr");
-            var quantityErr = $("#productQuantityErr");
-            var imagesErr = $("#productImageErr");
-            var currencyErr = $("#productCurrencyErr");
-            var min_qtyErr = $("#productMinQuantityErr");
-            var max_qtyErr = $("#productMaxQuantityErr");
-            
-            var title = $("#productName").val()
-            var descp = $("#productDescp").val()
-            var price = $("#productPrice").val()
-            var brand = $("#brandName").val()
-            var quantity = $("#productQuantity").val()
-            var images = $("#productImage").val()
-            var currency = $("#productCurrency").val()
-            var min_qty = $("#productMinQuantity").val()
-            var max_qty = $("#productMaxQuantity").val()
-            var discount = $("#productDiscount").val()
-            var refund_policy = $("#productRefundText").text()
-            var discount2 = $("#productDiscount2Text").text()
-            var shipment = $("#productShippingText").text()
-            var shipping_locations = [$("#locationTextN").text(), $("#locationTextG").text(), $("#locationTextS").text()]
-            var productOrigin = $("#productOrigin").val()
-            var productBrandName = $("#productBrandName").val()
-            var productMidsoleCategory = $("#productMidsoleCategory").val()
-            var productSeason = $("#productSeason").val()
-            var productGender = $("#productGender").val()
-            var productSupplyAbility = $("#productSupplyAbility").val()
-    
-            var productData = {
-                "title": title,
-                "descp": descp,
-                "price": price,
-                "brand": brand,
-                "quantity": quantity,
-                "images": images,
-                "currency": currency,
-                "min_qty": min_qty,
-                "max_qty": max_qty,
-                "discount": discount,
-                "discount_expiration": "",
-                "has_refund_policy": refund_policy,
-                "has_discount": discount2,
-                "has_shipment": shipment,
-                "has_variation": "false",
-                "shipping_locations": shipping_locations,
-                // "attrib": "",
-                "attrib": [
-                    {
-                    "type": "Other",
-                    "content": [
-                        {"name": "Place of Origin",
-                            "value": productOrigin
-                        },
-                        {"name": "Brand Name",
-                            "value": productBrandName
-                        },
-                        {"name": "Midsole Category",
-                            "value": productMidsoleCategory
-                        },
-                        {"name": "Season",
-                            "value": productSeason
-                        },
-                        {"name": "Gender",
-                            "value": productGender
-                        },
-                    ]
+        var titleErr = $('#productNameErr');
+        var descpErr = $("#productDescpErr");
+        var priceErr = $("#productPriceErr");
+        var brandErr = $("#brandNameErr");
+        var quantityErr = $("#productQuantityErr");
+        var imagesErr = $("#productImageErr");
+        var currencyErr = $("#productCurrencyErr");
+        var min_qtyErr = $("#productMinQuantityErr");
+        var max_qtyErr = $("#productMaxQuantityErr");
+        
+        var title = $("#productName").val()
+        var descp = $("#productDescp").val()
+        var price = $("#productPrice").val()
+        var brand = $("#brandName").val()
+        var quantity = $("#productQuantity").val()
+        var images = $("#productImage").val()
+        var currency = $("#productCurrency").text()
+        var min_qty = $("#productMinQuantity").val()
+        var max_qty = $("#productMaxQuantity").val()
+        var discount = $("#productDiscount").val()
+        var refund_policy = $("#productRefundText").text()
+        var discount2 = $("#productDiscount2Text").text()
+        var shipment = $("#productShippingText").text()
+        var shipping_locations = [$("#locationTextN").text(), $("#locationTextG").text(), $("#locationTextS").text()]
+        var productOrigin = $("#productOrigin").val()
+        var productBrandName = $("#productBrandName").val()
+        var productMidsoleCategory = $("#productMidsoleCategory").val()
+        var productSeason = $("#productSeason").val()
+        var productGender = $("#productGender").val()
+        var productSupplyAbility = $("#productSupplyAbility").val()
+        var productCategoryID = $("#productCategoryID").val()
+        var currentMerchantID = $("#currentMerchantID").val()
+
+        var productData = {
+            "title": title,
+            "descp": descp,
+            "price": price,
+            "brand": brand,
+            "quantity": quantity,
+            "images": images,
+            "currency": currency,
+            "min_qty": min_qty,
+            "max_qty": max_qty,
+            "discount": discount,
+            "discount_expiration": "",
+            "has_refund_policy": refund_policy,
+            "has_discount": discount2,
+            "has_shipment": shipment,
+            "has_variation": "false",
+            "shipping_locations": shipping_locations,
+            // "attrib": "",
+            "attrib": [
+                {
+                "type": "Other",
+                "content": [
+                    {"name": "Place of Origin",
+                        "value": productOrigin
                     },
-                    {
-                    "type": "Supply Ability" ,
-                    "content": [
-                        {"name": "Supply Ability",
-                            "value": productSupplyAbility
-                        }
-                    ]
-                    }
-                ],
-                "category_id": "",
-                "merchant_id": merchant
-            }
-    
-    
-            if(title == ""){
-                valid = false
-                titleErr.text("title cannot be empty")
-            }
-            if(descp == ""){
-                valid = false
-                descpErr.text("product description cannot be empty")
-            }
-            if(price == ""){
-                valid = false
-                priceErr.text('please enter a valid price')
-            }
-            
-            if(brand == ""){
-                valid = false
-                brandErr.text('brand name cannot be empty')
-            }
-            if (quantity == ""){
-                valid = false
-                quantityErr.text('please select a quantity')
-            }
-            if(images == ""){
-                valid = false
-                imagesErr.text('please upload a product image')
-            }
-            if(currency == ""){
-                valid = false
-                currencyErr.text('please select your currency')
-            }
-            if(min_qty == ""){
-                valid = false
-                min_qtyErr.text('minimum quantity cannot be empty')
-            }
-            if(max_qty == ""){
-                valid = false
-            max_qtyErr.text('maximum quantity cannot be empty')
-            }
-            else{
-                valid = true
-                $.ajax({
-                    method: "POST",
-                    url: `${api_name}/:products`,
-                    // contentType: 'application/json',
-                    data: JSON.stringify(productData),
-                    success: function(res){  
-                        console.log(res)
-                        if(res.code === 404){
-                            alert("Error 404, Check your details again");
-                        }
-                        else{
-                            alert("Posted Product Successfully");
-                            window.location.href = "page1.html"
-                            console.log('Success with posting product',res)
-                            localStorage.setItem('productData', JSON.stringify(res))                
-                        } 
+                    {"name": "Brand Name",
+                        "value": productBrandName
                     },
-                    error: function(err) {
-                        console.log(err);
-                        alert("An error occurred. Please try again.");
+                    {"name": "Midsole Category",
+                        "value": productMidsoleCategory
+                    },
+                    {"name": "Season",
+                        "value": productSeason
+                    },
+                    {"name": "Gender",
+                        "value": productGender
+                    },
+                ]
+                },
+                {
+                "type": "Supply Ability" ,
+                "content": [
+                    {"name": "Supply Ability",
+                        "value": productSupplyAbility
                     }
-                })
-            }
+                ]
+                }
+            ],
+            "category_id": productCategoryID,
+            "merchant_id": currentMerchantID
+        }
+
+
+        if(title == ""){
+            valid = false
+            titleErr.text("title cannot be empty")
+        }
+        if(descp == ""){
+            valid = false
+            descpErr.text("product description cannot be empty")
+        }
+        if(price == ""){
+            valid = false
+            priceErr.text('please enter a valid price')
+        }
+        
+        if(brand == ""){
+            valid = false
+            brandErr.text('brand name cannot be empty')
+        }
+        if (quantity == ""){
+            valid = false
+            quantityErr.text('please select a quantity')
+        }
+        if(images == ""){
+            valid = false
+            imagesErr.text('please upload a product image')
+        }
+        if(currency == ""){
+            valid = false
+            currencyErr.text('please select your currency')
+        }
+        if(min_qty == ""){
+            valid = false
+            min_qtyErr.text('minimum quantity cannot be empty')
+        }
+        if(max_qty == ""){
+            valid = false
+        max_qtyErr.text('maximum quantity cannot be empty')
+        }
+        else{
+            valid = true
+            $.ajax({
+                method: "POST",
+                url: `${api_name}/products`,
+                contentType: 'application/json',
+                data: JSON.stringify(productData),
+                success: function(res){  
+                    console.log(res)
+                    if(res.code === 404){
+                        alert("Error 404, Check your details again");
+                    }
+                    else{
+                        alert("Posted Product Successfully");
+                        
+                        var prodIDs;
+                        try {
+                            prodIDs = JSON.parse(localStorage.getItem('prodIDs')) || [];
+                        } catch (e) {
+                            console.error("Failed to parse prodIDs:", e);
+                            prodIDs = [];
+                        }
+
+                        // var prodIDs = JSON.parse(localStorage.setItem('prodIDs')) || [];
+                        // alert("prodIds was created successfully")
+                        if (res.id) {
+                            prodIDs.push(res.id);
+                            localStorage.setItem('prodIDs', JSON.stringify(prodIDs));
+                            console.log('Success with posting product', res);
+                            localStorage.setItem('productData', JSON.stringify(res));
+                        } else {
+                            console.error('Invalid response ID:', res.id);
+                        }
+                        // prodIDs.push(res.id);
+                        // localStorage.setItem('prodIDs', JSON.stringify(prodIDs));
+                        // console.log('Success with posting product',res)
+                        // localStorage.setItem('productData', JSON.stringify(res))                
+                    } 
+                },
+                error: function(err) {
+                    console.log(err);
+                    alert("An error occurred. Please try again.");
+                }
+            })
             
+        }
+        
+    })  
+
+    $("#showProducts").click(function(){
+        $("#allProducts").toggleClass("block none")
+        var allprodIDs = JSON.parse(localStorage.getItem('prodIDs')) || [];
+        if (allprodIDs.length === 0) {
+            alert("No products found.");
+            return;
+        }
+        $.ajax({
+            url: `${api_name}/products?merchant_id=${merchant}`,
+            method: "GET",
+            // data: JSON.stringify(productData),
+            success: function(res){
+                // $("#").empty();
+                if (Array.isArray(res.data)) {
+                res.data.forEach((pro) => {   
+                    console.log("All good so far")
+                    $("#allProducts").append(
+                        `
+                            <div data-id=${pro.id} class="appendCategory">
+                                <div class="prodDetail" style="font-size: 2rem; text-decoration: underline; display: flex; flex-direction: row; justify-content: space-between;">
+                                    <p>Category: ${pro.title}</p>
+                                    <p id=${pro.id}>X</p>
+                                </div>
+                                <div class="productSlider">
+                                    <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${pro.image}" alt="IMAGES">
+                                    <label style="text-align: center; font-size: 1rem;" for="">${pro.title}</label>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p id="categoryID">The category ID is: ${pro.id} </p>
+                                </div>
+                            </div>
+                                  `)
+                                  
+                    })
+                   
+                }
+                else {
+                    console.error('Expected array but got:', res);
+                    console.log(res)
+            }
+            },
+            error: function(err) {
+                console.log(err);
+                alert("An error occurred. Please try again.");
+            }
         })
-    })    
-
-
+    })
+   
 
     
         
     $("#otherBtn").click(function(){
-        $("#otherDrop").toggleClass("none, block")
+        $("#otherDrop").toggleClass("none block")
     })
-    
     
 
     $("#createCategory").click(function(){
         $("#categoryPage").toggleClass("none block")
     })
-    $("#merchId").text(`${merchant}`)
+    
     $("#categoryForm").on("submit", function(e){
         e.preventDefault()
         let valid = true
@@ -366,17 +443,17 @@ $(document).ready(function(){
             method: "GET",
             success: function(res){
                 // $("#tags").empty();
-                alert("Data retrieval was successful")
                 res.forEach((cat) => {
                     if (allCatIDs.includes(cat.id)) {
                         $("#allCategories").append(
                             `
                                 <div data-id=${cat.id} class="appendCategory">
-                                    <div style="font-size: 2rem; text-decoration: underline;">
+                                    <div style="font-size: 2rem; text-decoration: underline; display: flex; flex-direction: row; justify-content: space-between;">
                                         <p>Category: ${cat.name}</p>
+                                        <p id=${cat.id}>X</p>
                                     </div>
                                     <div>
-                                        <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${imag}" alt="IMAGES">
+                                        <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${cat.image}" alt="IMAGES">
                                         <label style="text-align: center; font-size: 1rem;" for="">${cat.name}</label>
                                     </div>
                                     <div style="text-align: right;">
@@ -395,4 +472,56 @@ $(document).ready(function(){
                     
         })
     })
+
+
+
+///////////////////////////////////////////////////////////////
+    $("#userDetailEdit").click(function(){
+        $("#updateUserForm").toggleClass("none block")
+    })
+
+    $("#updateUserForm").on("submit", function(e){
+        e.preventDefault()
+        let valid = true
+        var firstname = $("#updateUserFirstName").val()
+        var surname = $("#updateUserSurName").val()
+        var email = $("#updateUserEmail").val()
+        var phone = $("#updateUserPhone").val()
+
+        let updateUser_Data = {
+            "first_name":firstname,
+            "last_name": surname,
+            "email":email,
+            "phone":phone
+        }
+        $.ajax({
+            url: `${api_name}/users/${USERID}`,
+            method: "PUT",
+            contentType: "application/javascript",
+            data: JSON.stringify(updateUser_Data),
+            success: function(res){
+                if(res.code === 404){
+                    alert("Error 404, Details not found")
+                }
+                else{
+                    alert("Updated Successfully!")
+                    localStorage.setItem('updateUser_Data', JSON.stringify(res));
+                    // const user_ID = JSON.parse(localStorage.getItem("userLog_Data"))
+                    // user_ID.first_name = updateUser_Data.first_name;
+                    // user_ID.last_name = updateUser_Data.last_name;
+                    // user_ID.email = updateUser_Data.email;
+                    // user_ID.phone = updateUser_Data.phone;
+
+                    // localStorage.setItem('updateUser_Data', JSON.stringify(updateUser_Data));
+                }
+            },
+            error: function(err) {
+                console.log(err);
+                alert("An error occurred. Please try again.");
+            }
+
+
+        })
+    })    
+    
 })

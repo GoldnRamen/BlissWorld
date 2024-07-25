@@ -9,6 +9,16 @@
 font-family: "CeraStencilPRO-Regular";
 src: url("./CeraStencilPRO-Regular.ttf");
 }
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 4;
+}
 .blissCart{
     width: 500px;
     height: 600px;

@@ -74,6 +74,12 @@
                         <hr>
                         <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
                         <hr>
+                        <p id="showProducts" style="cursor: pointer;">Show products</p>
+                        <hr>
+                        <!-- <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
+                        <hr>
+                        <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
+                        <hr> -->
                         <p id="merchantLogout">Log Out</p>
                         <hr>
                     </div>
@@ -88,6 +94,7 @@
                             <br>
                             <div>
                                 <input type="text" placeholder="Enter product name" id="productName">
+                                <p></p>
                                 <p class="Errr" id="productNameErr"></p>
                             </div>
                             
@@ -113,7 +120,7 @@
                             
                             <div style="display: flex; flex-direction: column; gap: 10px;">
                                 <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's image</label>
-                                <input type="file" id="productImage">
+                                <input type="text" id="productImage">
                                 <p class="Errr"  id="productImageErr"></p>
                             </div>
                             
@@ -129,7 +136,9 @@
                                     <input type="checkbox" id="productCurrencyDollars">
                                     <p class="Errr"  id="productCurrencyErr"></p>
                                 </div>
-                                
+                                <div>
+                                    <p id="productCurrency"></p>
+                                </div>
                             </div>
                             
                             <div>
@@ -203,11 +212,13 @@
                             </div>
 
                             <div>
-                                <input type="text" placeholder="Enter Product Category ID" id="">
+                                <input type="text" placeholder="Enter Product Category ID" id="productCategoryID">
                             </div>
                             
                             <div>
-                                <input type="text" placeholder="Enter Merchant ID" id="">
+                                <input type="text" placeholder="Enter Merchant ID" id="currentMerchantID">
+                                <label for="">Merchant ID</label>
+                                <p id="merchId"></p>
                             </div>
                             
                             <button id="submitProduct" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
@@ -243,33 +254,6 @@
                                 <input type="text" placeholder="Enter description" name="" id="editDescription">
                             </div>
                             
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your icon</label>
-                                <input type="file" id="editIcon">
-                            </div>
-
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your banner</label>
-                                <input type="file" id="editBanner">
-                            </div>
-                            
-                            <div>                               
-                                <input type="text" placeholder="Enter your state" id="editState">
-                            </div>
-                            
-                            <div>
-                                <input type="text" placeholder="Enter your district" id="editDistrict">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 20px;">
-                                <label for="" style="text-align: center; border: none; border-bottom: 1px solid black; width: fit-content;">Enter your Social Media Handles on the following platforms:</label>
-                                <div style="display: flex; gap: 30px;">
-                                    <input type="text" placeholder="Enter X handle" name="" id="xHandle">
-                                    <input type="text" placeholder="Enter FaceBook handle" name="" id="fbHandle">
-                                    <input type="text" placeholder="Enter Instagram handle" name="" id="inHandle">
-                                </div>
-                            </div>
-                            
                             <div style="display: flex; align-items: center; gap: 30px;">
                                 <label for="" style="border-bottom: 1px solid black;">Enter phone numbers:</label>
                                 <textarea  style="border: none; border-bottom: 3px solid black;" placeholder="Enter phone numbers" id="editPhoneNumbers"></textarea>
@@ -295,14 +279,20 @@
                             
                            <div style="display: flex; flex-direction: column; gap: 10px;">
                                 <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your category Image</label>
-                                <input type="file" id="categoryImage">
+                                <input type="text" id="categoryImage">
                             </div>
                             <button id="submitCategory" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
                         </form>
                     </div>
                     <div class="createPage none" id="allCategories" style="margin-top: 20px;">
+                        <label for="" style="text-align: center;"><h1>All Categories</h1></label>
                         
                     </div>
+                    <div class="createPage none" id="allProducts" style="margin-top: 20px;">
+                        <label for="" style="text-align: center;"><h1>All Products from this Merchant</h1></label>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>

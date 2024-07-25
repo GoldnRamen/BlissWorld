@@ -51,6 +51,7 @@ $(document).ready(function (){
                                 `<p>Welcome ${user_loginData.email}</p>`
                             )
                             console.log("Howdy")
+                            localStorage.setItem('userLog_Data', JSON.stringify(res))   
                         }
                     },
                     error: function(err) {
