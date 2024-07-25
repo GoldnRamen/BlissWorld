@@ -592,11 +592,12 @@ $(document).ready(function() {
 
      // $(".A-disappearingCart").click(function(){
      //      $(".blissCart").show()
-          // $('#overlay').toggleClass('visible')
+     //      // $('#overlay').toggleClass('visible')
      // })
      $(".A-disappearingCart").click(function(){
-          $("#ModalCover").show()
-          // $('#overlay').toggleClass('visible')
+          $(".blissCart").show()
+          $('#ModalCover').toggleClass('visible')
+          // $('#ModalCover').toggleClass('visible')
      })
      // $("#prodDetail1").click(function(){
      //      $("#cart1").removeProp("none")

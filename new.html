@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+    <title>Shop Page</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="createPage none" id="editPage">
+        <form action="" id="editForm">
+            <label for="" style="text-align: center;"><h1>Edit Merchant Details</h1></label>
+            <hr>
+            <br>
+            <br>
+            <div>
+                <input type="text" placeholder="Enter your first name" id="editFirstName">
+                <p class="Errr" id="editFirstNameErr"></p>
+            </div>
+            
+            <div>
+                <input type="text" placeholder="Enter your surname" id="editLastName">
+                <p class="Errr" id="editLastNameErr"></p>
+            </div>
+            
+            <div>
+                <input type="text" placeholder="Enter your email" id="editEmail">
+                <p class="Errr" id="editEmailErr"></p>
+            </div>
+            
+            <div>
+                <input type="text" placeholder="Enter your phone number" name="" id="editPhoneNumber">
+                <p class="Errr" id="editPhoneNumberErr"></p>
+            </div>
+            
+            <div>
+                <input type="text" placeholder="Enter store name" name="" id="editStoreName">
+                <p class="Errr" id="editStoreNameErr"></p>
+            </div>
+
+            <div>
+                <input type="text" placeholder="Enter description" name="" id="editDescription">
+                <p class="Errr" id="editDescriptionErr"></p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your icon</label>
+                <input type="text" id="editIcon">
+                <p class="Errr" id="editIconErr"></p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your banner</label>
+                <input type="text" id="editBanner">
+                <p class="Errr" id="editBannerErr"></p>
+            </div>
+            
+            <div>                               
+                <input type="text" placeholder="Enter your state" id="editState">
+                <p class="Errr" id="editStateErr"></p>
+            </div>
+            
+            <div>
+                <input type="text" placeholder="Enter your district" id="editDistrict">
+                <p class="Errr" id="editDistrictErr"></p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <label for="" style="text-align: center; border: none; border-bottom: 1px solid black; width: fit-content;">Enter your Social Media Handles on the following platforms:</label>
+                <div style="display: flex; gap: 30px;">
+                    <input type="text" placeholder="Enter X handle" name="" id="xHandle">
+                    <input type="text" placeholder="Enter FaceBook handle" name="" id="fbHandle">
+                    <input type="text" placeholder="Enter Instagram handle" name="" id="inHandle">
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 30px;">
+                <label for="" style="border-bottom: 1px solid black;">Enter phone numbers:</label>
+                <textarea  style="border: none; border-bottom: 3px solid black;" placeholder="Enter phone numbers" id="editPhoneNumbers"></textarea>
+                <p class="Errr" id="editPhoneNumbersErr"></p>
+            </div>
+
+            <button id="submitEdit" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
