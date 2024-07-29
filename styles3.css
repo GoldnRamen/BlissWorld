@@ -19,10 +19,11 @@ src: url("./CeraStencilPRO-Regular.ttf");
     background-color: rgb(211, 55, 211);
 }
 .log{
-    height: 650px;
+    height: 50px;
     width: 100%;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 20px;
+    
 }
 .log h2{
     font-size: 30px;

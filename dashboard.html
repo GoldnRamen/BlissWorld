@@ -35,7 +35,7 @@
                                     <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
                         
                             
-                                    <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
+                                    <a href="cart.html"><img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
                                 </div>        
             
                         </div>
@@ -68,24 +68,22 @@
                     <div class="merch-menu">
                         <p id="createProd" style="cursor: pointer;">Create Product</p>
                         <hr>
-                        <p id="editProd" style="cursor: pointer;">Edit Merchant Details</p>
-                        <hr>
                         <p id="createCategory" style="cursor: pointer;">Create a new Category</p>
                         <hr>
                         <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
                         <hr>
                         <p id="showProducts" style="cursor: pointer;">Show products</p>
                         <hr>
-                        <!-- <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
+                        <p id="changePassword" style="cursor: pointer;">Change Profile Password</p>
                         <hr>
-                        <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
+                        <!--<p id="showCategories" style="cursor: pointer;">Show all Categories</p>
                         <hr> -->
                         <p id="merchantLogout">Log Out</p>
                         <hr>
                     </div>
                     
                 </div>
-                <div class="body-right">
+                <div class="body-right" style="padding-left: 20px; padding-right: 20px;">
                     <div class="createPage none" id="createPage">
                         <form action="" id="createForm">
                             <label for="" style="text-align: center;"><h1>Create your product here</h1></label>
@@ -218,50 +216,12 @@
                             <div>
                                 <input type="text" placeholder="Enter Merchant ID" id="currentMerchantID">
                                 <label for="">Merchant ID</label>
-                                <p id="merchId"></p>
+                                <p id="merchId2"></p>
                             </div>
                             
                             <button id="submitProduct" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
                         </form>
-                    </div>
-                    <div class="createPage none" id="editPage">
-                        <form action="" id="editForm">
-                            <label for="" style="text-align: center;"><h1>Edit Merchant Details</h1></label>
-                            <hr>
-                            <br>
-                            <br>
-                            <div>
-                                <input type="text" placeholder="Enter your first name" id="editFirstName">
-                            </div>
-                            
-                            <div>
-                                <input type="text" placeholder="Enter your surname" id="editLastName">
-                            </div>
-                            
-                            <div>
-                                <input type="text" placeholder="Enter your email" id="editEmail">
-                            </div>
-                            
-                            <div>
-                                <input type="text" placeholder="Enter your phone number" name="" id="editPhoneNumber">
-                            </div>
-                            
-                            <div>
-                                <input type="text" placeholder="Enter store name" name="" id="editStoreName">
-                            </div>
-
-                            <div>
-                                <input type="text" placeholder="Enter description" name="" id="editDescription">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; gap: 30px;">
-                                <label for="" style="border-bottom: 1px solid black;">Enter phone numbers:</label>
-                                <textarea  style="border: none; border-bottom: 3px solid black;" placeholder="Enter phone numbers" id="editPhoneNumbers"></textarea>
-                            </div>
-
-                            <button id="submitEdit" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
-                        </form>
-                    </div>
+                    </div>          
                     <div class="createPage none" id="categoryPage">
                         <form action="" id="categoryForm">
                             <label for="" style="text-align: center;"><h1>Create Category</h1></label>
@@ -284,15 +244,27 @@
                             <button id="submitCategory" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
                         </form>
                     </div>
-                    <div class="createPage none" id="allCategories" style="margin-top: 20px;">
-                        <label for="" style="text-align: center;"><h1>All Categories</h1></label>
-                        
+                    <div class="createPage none" id="allCategories" style="margin-top: 20px; padding-left: 20px; padding-right: 20px;">
+                        <label for="" style="text-align: center;"><h1>All Categories</h1></label>    
                     </div>
-                    <div class="createPage none" id="allProducts" style="margin-top: 20px;">
+                    <div class="createPage none" id="allProducts" style="margin-top: 20px; padding-left: 20px; padding-right: 20px;">
                         <label for="" style="text-align: center;"><h1>All Products from this Merchant</h1></label>
                         
                     </div>
-                    
+                    <div class="createPage none" id="passwordChange" style="margin-top: 20px;">
+                        <form action="" style="margin-left: 30px;" id="merchantPasswordForm">
+                            <label for="" style="text-align: center;"><h1>Create Category</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div style="display: flex; gap: 30px;">
+                                <input type="text" style="border: none; border-bottom: 2px solid black; width: 250px; height: 40px;" placeholder="Enter your Old Password" id="merchantpassword1">
+                                <input type="text" style="border: none; border-bottom: 2px solid black; width: 250px; height: 40px;" placeholder="Enter your new Password" id="merchantpassword2">
+                            </div>
+                            
+                            <button id="submitPassword" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

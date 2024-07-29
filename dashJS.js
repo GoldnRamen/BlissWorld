@@ -13,7 +13,7 @@ $(document).ready(function(){
     var produ = JSON.parse(localStorage.getItem("prodIDs"))
     var prod = produ.id
 
-    $("#merchId").text(`${merchant}`)
+    $("#merchId, #merchId2").text(`${merchant}`)
     $("#merchIdcreate").text(`${merchant}`)
     console.log("The merchant Id is", merchant)
     console.log("The created categories are: ", categor)
@@ -23,66 +23,13 @@ $(document).ready(function(){
     //////////////////////////////////////////
 
 
-    $("#editProd").click(function(){
-        $("#editPage").toggleClass("none show")
-    })
+    
     ///////////////////////////////////////////////
 
 
-    var editFirstName = $("#editFirstName").val()
-    var editLastName = $("#editLastName").val()
-    var editEmail = $("#editEmail").val()
-    var editPhoneNumber = $("#editPhoneNumber").val()
-    var editStoreName = $("#editStoreName").val()
-    var editDescription = $("#editDescription").val()
-    let editPhoneNumbers = [$("#editPhoneNumbers")]
+    
 
-
-   $("#editForm").on("submit", function(e){
-        e.preventDefault()
-        let valid = true
-        var updatedMerchant_Info = {
-            "first_name":editFirstName,
-            "last_name":editLastName,
-            "email":editEmail,
-            "phone":editPhoneNumber,
-            "store_name":editStoreName,
-            "descp":editDescription,
-            "icon":"",
-            "banner":"",
-            "state": "",
-            "district": "",
-            "social_media": {
-                "x": "",
-                "face_book":"",
-                "instagram": ""
-            },
-            "phones":editPhoneNumbers
-        }
-        $.ajax({
-            url: `${api_name}/merchants/${merchant}`,
-            method: "PUT",
-            contentType: 'application/json',
-            data: updatedMerchant_Info,
-            success: function(res) {
-                console.log(res);
-                if (res.code === 404) {
-                    valid = false
-                    alert("Error 404, Check your details again");
-                } else {
-                    valid = true
-                    alert("Edited merchant information successfully");
-                    console.log('Success with posting product', res);
-                    localStorage.setItem('updatedMerchant_Info', JSON.stringify(updatedMerchant_Info));
-                    window.location.href = "merchantLog.html";
-                }
-            },
-            error: function(err) {
-                console.log(err);
-                alert("An error occurred. Please try again.");
-            }
-        })
-   })
+  
     
     /////////////////////////////////////////
     // $('#productRefund').trigger('change')
@@ -197,6 +144,10 @@ $(document).ready(function(){
         var productSupplyAbility = $("#productSupplyAbility").val()
         var productCategoryID = $("#productCategoryID").val()
         var currentMerchantID = $("#currentMerchantID").val()
+
+
+
+        
 
         var productData = {
             "title": title,
@@ -355,19 +306,91 @@ $(document).ready(function(){
                     console.log("All good so far")
                     $("#allProducts").append(
                         `
-                            <div data-id=${pro.id} class="appendCategory">
+                            <div data-id=${pro.id} class="appendProd" style="background-color: rgb(51, 34, 3); border-radius: 10px; height: 320px; padding: 0 20px; margin-bottom: 50px; box-shadow: 1px 1px 10px gray; color:white;">
                                 <div class="prodDetail" style="font-size: 2rem; text-decoration: underline; display: flex; flex-direction: row; justify-content: space-between;">
-                                    <p>Category: ${pro.title}</p>
-                                    <p id=${pro.id}>X</p>
+                                    <p>Product Title: ${pro.title}</p>
+                                    <p class= "deleTe">X</p>
                                 </div>
-                                <div class="productSlider">
-                                    <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${pro.image}" alt="IMAGES">
-                                    <label style="text-align: center; font-size: 1rem;" for="">${pro.title}</label>
+                                <div class="productSlide" style="margin-left: 50px">
+                                    <img style="width: 200px; height: 200px; object-fit: cover; object-position: center;" src="${pro.image}" alt="IMAGES">
+                                    <label style="text-align: center; font-size: 1rem;" for="">This product is called: ${pro.title}</label>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p id="categoryID">The category ID is: ${pro.id} </p>
+                                    <p id="categoryID" style="margin-bottom: 10px;">The category ID is: ${pro.id} </p>
                                 </div>
                             </div>
+                                  `)
+                                  
+                    // $("#allContent").append(
+                    //     `
+                    //         <div data-id=${pro.id}>
+                    //             <div class="prodDetail" style="font-size: 2rem; text-decoration: underline; display: flex; flex-direction: row; justify-content: space-between;">
+                    //                 <p>Category: ${pro.title}</p>
+                    //                 <p id=${pro.id}>X</p>
+                    //             </div>
+                    //             <div class="productSlider">
+                    //                 <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${pro.image}" alt="IMAGES">
+                    //                 <label style="text-align: center; font-size: 1rem;" for="">${pro.title}</label>
+                    //             </div>
+                    //             <div style="text-align: right;">
+                    //                 <p id="categoryID">The category ID is: ${pro.id} </p>
+                    //             </div>
+                    //         </div>
+                    //               `)
+                                  
+                    })
+                   
+                }
+                else {
+                    console.error('Expected array but got:', res);
+                    console.log(res)
+            }
+            },
+            error: function(err) {
+                console.log(err);
+                alert("An error occurred. Please try again.");
+            }
+        })
+    })
+    $("#loadProducts").click(function(){
+        $("#loadProducts").hide()
+        $("#allProducts").toggleClass("block none")
+        var allprodIDs = JSON.parse(localStorage.getItem('prodIDs')) || [];
+        if (allprodIDs.length === 0) {
+            alert("No products found.");
+            return;
+        }
+        $.ajax({
+            url: `${api_name}/products?merchant_id=${merchant}`,
+            method: "GET",
+            // data: JSON.stringify(productData),
+            success: function(res){
+                // $("#").empty();
+                if (Array.isArray(res.data)) {
+                res.data.forEach((pro) => {   
+                    console.log("All good so far")
+                    $("#allContent").append(
+                        `<div class="A-left" data-id=${pro.id} >
+                            <div>
+                                <div class="productSlider" data-id=${pro.id}>
+                                    <img src="${pro.image}" style="width: 450px;" alt="IMAGES">
+                                </div>
+                                <div class="stars">
+                                    <img src="images/rating.png" alt="IMAGES">
+                                    <h3>Best Seller  4.5(${pro.quantity})</h3>
+                                </div>
+                                <div class="prodDetail" data-id= ${pro.id}>
+                                    <p>${pro.title}</p> 
+                                    <p >$${pro.price}</p>
+                                    <p >${pro.descp}</p>
+                                </div>
+                                <div class="A-disppearingCart none" data-id = ${pro.id}">
+                                    <h2>ADD TO BAG</h2>
+                                </div>
+                            </div>
+
+                            
+
                                   `)
                                   
                     })
@@ -385,7 +408,14 @@ $(document).ready(function(){
         })
     })
    
-
+    $(".prodDetail").hover(
+        function() {
+            $(this).closest(".A-left").find(".A-disppearingCart").removeClass("none");
+        },
+        function() {
+            $(this).closest(".A-left").find(".A-disppearingCart").addClass("none");
+        }
+    );
     
         
     $("#otherBtn").click(function(){
@@ -450,7 +480,7 @@ $(document).ready(function(){
                                 <div data-id=${cat.id} class="appendCategory">
                                     <div style="font-size: 2rem; text-decoration: underline; display: flex; flex-direction: row; justify-content: space-between;">
                                         <p>Category: ${cat.name}</p>
-                                        <p id=${cat.id}>X</p>
+                                        <p class= "deleTe" style="cursor: pointer;">X</p>
                                     </div>
                                     <div>
                                         <img style="width: 300px; height: 350px; object-fit: cover; object-position: center;" src="${cat.image}" alt="IMAGES">
@@ -476,52 +506,53 @@ $(document).ready(function(){
 
 
 ///////////////////////////////////////////////////////////////
-    $("#userDetailEdit").click(function(){
-        $("#updateUserForm").toggleClass("none block")
+    
+    $(document).on("click", ".deleTe", function(e){
+        var categor = $(".appendCategory").data("id")
+        e.preventDefault();
+        $.ajax({
+            url: `${api_name}/categories/${categor}`,
+            method: "DELETE",
+            success: function(res){
+                alert("Category has been removed")
+                $(`.appendCategory[data-id=${categor}]`).remove();
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred: ", status, error);
+            }
+        })
     })
-
-    $("#updateUserForm").on("submit", function(e){
+    $("#changePassword").click(function(){
+        $("#passwordChange").toggleClass("none show")
+    })
+    $("#merchantPasswordForm").on("submit", function(e){
         e.preventDefault()
-        let valid = true
-        var firstname = $("#updateUserFirstName").val()
-        var surname = $("#updateUserSurName").val()
-        var email = $("#updateUserEmail").val()
-        var phone = $("#updateUserPhone").val()
+        var oldpassword = $("#merchantpassword1").val()
+        var newpassword = $("#merchantpassword2").val()
 
-        let updateUser_Data = {
-            "first_name":firstname,
-            "last_name": surname,
-            "email":email,
-            "phone":phone
+        let merchantPasswords = {
+            "old_password": oldpassword,
+            "new_password": newpassword
         }
         $.ajax({
-            url: `${api_name}/users/${USERID}`,
+            url: `${api_name}/merchants/${merchant}/change-passwd`,
             method: "PUT",
-            contentType: "application/javascript",
-            data: JSON.stringify(updateUser_Data),
+            data: JSON.stringify(merchantPasswords),
+            contentType: "application/json",
             success: function(res){
-                if(res.code === 404){
-                    alert("Error 404, Details not found")
+                if(res === 404){
+                    alert("Error 404, Password Mismatch")
                 }
                 else{
-                    alert("Updated Successfully!")
-                    localStorage.setItem('updateUser_Data', JSON.stringify(res));
-                    // const user_ID = JSON.parse(localStorage.getItem("userLog_Data"))
-                    // user_ID.first_name = updateUser_Data.first_name;
-                    // user_ID.last_name = updateUser_Data.last_name;
-                    // user_ID.email = updateUser_Data.email;
-                    // user_ID.phone = updateUser_Data.phone;
-
-                    // localStorage.setItem('updateUser_Data', JSON.stringify(updateUser_Data));
+                    alert("Password updated Successfully!")
+                    localStorage.setItem('merchantPasswords', JSON.stringify(res)) || [];
                 }
             },
             error: function(err) {
                 console.log(err);
                 alert("An error occurred. Please try again.");
             }
-
-
         })
-    })    
+    })
     
 })
