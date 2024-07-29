@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cssStyles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js">
+    
+    <link href='https://fonts.googleapis.com/css?family=Frank Ruhl Libre' rel='stylesheet'>
+</head>
+<style>
+    body{
+    font-family: "ArcherBoldPro";
+    }
+    @font-face {
+        font-family: "ArcherBoldPro";
+        src: url("./archer-2/ArcherBoldPro.otf");
+    }
+    @font-face {
+    font-family: "CeraStencilPRO-Regular";
+    src: url("./CeraStencilPRO-Regular.ttf");
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 4;
+    }
+    .blissCart{
+        width: 600px;
+        height: 650px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(248, 250, 250);
+        border: .5px solid rgb(99, 99, 99);
+        border-radius: 20px;
+        z-index: 5;
+        display: grid;
+        grid-template-rows: 25% 50% 25%;
+    }
+    .cart-top{
+        display: flex;
+        flex-direction: column; 
+        text-align: center;   
+        border-bottom: 1px solid black;   
+        height: fit-content; 
+    }
+    .cart-top-bar{
+        height: 10px;
+        width: 95%;
+        background-color: rgb(42, 42, 235);
+        border-radius: 20px;
+    }
+    .cart-mid{
+        display: flex;
+        flex-direction: column;
+        margin: 5px 20px;
+        padding: 5px 0;
+        justify-content: space-evenly;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        overflow-y: scroll;
+    }
+    .cart-item{
+        display: flex;
+        flex-direction: row;
+        margin: 5px 0;
+        border-bottom: 1px solid black;
+        height: fit-content;
+    }
+    .cart-image{
+        width: 150px;
+        margin-right: 5px;
+    }
+    .cart-text{
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        align-items: left;
+    }
+    .cart-Btns{
+        display: flex;
+        flex-direction: row;
+    }
+    .cart-trash{
+        display: flex;
+        flex: column;
+        align-items: right;
+    }
+    .cart-bottom{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 5px 15px;
+    }
+    .cart-bottom-bar{
+        margin: 0 20px;
+        background-color: rgb(44, 167, 156);
+        border-radius: 10px;
+        height: 80px;
+        color: white;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+    .none{
+        display: none;
+    }
+    .mt{
+        margin-top: 100px;
+    }
+    .A-sectionHeader{
+        display: flex; 
+        justify-content: center;
+        margin-top: 200px;
+    }
+    .A-skinConcern{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        /* gap: 5px; */
+        margin: 0 80px;
+        margin-bottom: 30px;
+    }
+    .A-skinConcern img{
+        width: 180px
+
+    }
+    .A-dropDown{
+        display: flex;
+        position: absolute;
+        right: 100px;
+        border: .5px solid black;
+        gap: 1px;
+        background-color: black;
+        z-index: 2;
+    }
+    .A-dropDown button{
+        padding: 15px 55px;
+        border: none;
+        background-color: white;
+    }
+    .A-dropDown select{
+        border: none;
+        background-color: transparent;
+        width: 30px;
+    }
+    .A-products{
+        display: flex;
+        flex-direction: column;
+        margin: 120px 50%;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+
+    }
+    .Block1{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        z-index: 1;
+        gap: 50px;
+    }
+    .A-left{
+        display: flex;
+        flex-direction: column;
+    }
+    .A-right{
+        display: flex;
+        flex-direction: column;
+    }
+    .productSlider{
+        display: flex;
+        flex-direction: row;
+        width: 450px;
+        height: 450px;
+        /* border: .5px solid black; */
+        
+    }
+    .productSlider img{
+        height: 450px;
+        width: 300px;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+    }
+    .A-bestSeller{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 40px;
+        background-color: rgba(25, 201, 201, 0.836);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    .A-bestSeller2{
+        position: absolute;
+        top: 0;
+        left: 510px;
+        width: 100px;
+        height: 40px;
+        background-color:  rgba(25, 201, 201, 0.836);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    .A-discount{
+        position: absolute;
+        top: 0;
+        left: 500px;
+        width: 100px;
+        height: 40px;
+        background-color: rgb(113, 13, 180);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    .A-scrollBtnsL{
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 25%;
+        width: 47%;
+        z-index: 2;
+        justify-content: space-between;
+    }
+    .A-scrollBtnsR{
+        display: flex;
+        position: absolute;
+        left: 53%;
+        top: 25%;
+        width: 47%;
+        z-index: 2;
+        justify-content: space-between;
+        
+    }
+    .A-scrollBtnsL img{
+        width: 18px;
+    }
+    .A-scrollBtnsR img{
+        width: 18px;
+    }
+    .stars{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+    }
+    .stars img{
+        width: 200px;
+    }
+    .prodDetail{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+        line-height: 1;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .prodDetail p:nth-child(3), .prodDetail p:nth-child(4){
+        font-style: italic;
+    }
+    .prodDetail p{
+        font-size: 1.3rem;
+    }
+    .prodDetail p{
+        margin: 0;
+        text-align: center;
+    }
+    .A-disppearingCart{
+        background-color: rgb(129, 192, 235);
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        font-family: "CeraStencilPRO-Regular";
+        /* display: none; */
+    }
+    .Block2{
+        position: relative;
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .A-posters img{
+        width: 500px;
+        height: 650px;
+        object-fit: contain;
+    }
+    .purple{
+        background-color:  rgb(113, 13, 180);
+        color: white;
+    }
+    .black{
+        background-color: black;
+        color: white;
+    }
+    .navigation{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 150px 0;
+        gap: 10px;
+        border-bottom: .5px solid rgb(41, 40, 40);
+    }
+    .navigation button{
+        background-color: transparent;
+        border: none;
+        padding: 5px 30px;
+        text-align: end;
+
+    }
+    #cart1{
+        display: none;
+    }
+    #cart2{
+        display: none;
+    }
+    #cart3, #cart4, #cart5, #cart6, #cart7, #cart8, #cart9, 
+    #cart10, #cart11, #cart12, #cart13, #cart14, #cart15, #cart16, 
+    #cart17, #cart18, #cart19, #cart20, #cart21, #cart22, #cart23, 
+    #cart24, #cart25, #cart26, #cart27, #cart28, #cart29, #cart30, 
+    #cart31, #cart32
+    {
+        display: none;
+    }
+</style>
+<body>
+    <div class="overlay"></div>
+    <div class="header">
+        <a href="">
+            <p>Free shipping on U.S orders $50+. Free Returns.International Shipping !</p>
+        </a>
+    </div>
+    <div class="header2">
+        <div class="head_content">
+            <div class="head_content1">
+                <!-- <div id="head_img"> -->
+                    <div>
+                        <a href="index.html"><img src="./images/Bliss_Logo_White_3x_6c3396d6-15e0-4c23-a933-633783887842_140x.png" alt="" style=" width: 100%; cursor: pointer;"></a>
+                    </div>
+                <!-- </div> -->
+                
+                    <div class="row">
+                        <img src="./images/search-interface-symbol.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
+                    
+                    
+                        <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
+            
+                
+                        <a href="cart.html"><img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
+                    </div>
+                
+
+
+            </div>
+        </div>
+        <div class="nav_list">
+            <ul>
+                <li><a href="index.html" style="color: black; text-decoration: none;">Shop All</a></li>
+                <li>Best Sellers</li>
+                <li>Skincare</li>
+                <li>Shop By Concern</li>
+                <li>Body care</li>
+                <li>Sets & Kits</li>
+                <li>Famous Faces</li>
+                <li>Skin Quiz</li>                
+            </ul>
+
+        </div>
+
+    </div>
+    <div class="blissCart none" style="width: 500px;">
+        <div class="cart-top">
+            <div style="border-bottom: 1px solid black; ">
+                <div><h5>Your Bag</h5></div>
+            <div id="cartClose" style="position: fixed; top: 5px; right: 30px; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 100; cursor: pointer;"><h3>X</h3></div>
+            </div>
+            <div style="align-items: center; margin-top: 10px;">
+                <div class="cart-top-bar"></div>
+                <div><h5 style="margin: 0;">🎉 Congrats! You've unlocked FREE SHIPPING!</h5></div>
+            </div>
+            <hr>
+        </div>
+        <div class="cart-mid" style="overflow-y: scroll; position: relative; height: 350px;">
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div class="textCart">
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+ 
+        </div>
+        <div class="cart-bottom" style="border-top: 1px solid black;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div><h3>Subtotal (14 items)</h3></div>
+                <div><h3>=</h3></div>
+            </div>
+            <div class="cart-bottom-bar" style="text-align: center;"><h2>Checkout</h2></div>
+        </div>   
+       
+    </div>
+    <div class="A-body">
+        <div class="A-sectionHeader">
+            <h1 style="font-family: CeraStencilPRO-Regular; font-size: 2rem;">
+                SELECT YOUR SKIN CONCERN:
+            </h1>
+        </div>
+        <div class="A-skinConcern">
+            <img src="images/Bliss_Shop_by_Concern_LP_Anti_Aging_Filter_Image_3x_fe3ea03f-f22b-455e-9d54-9822815ddf9c.jpg" alt="IMAGES">
+            <img src="images/Bliss_Shop_by_Concern_LP_Acne-Oily_Skin_Filter_Image_3x_060ad1a1-b07c-4804-9871-655571f3cfba.jpg" alt="IMAGES">
+            <img src="images/Bliss_Shop_by_Concern_LP_Dullness_Filter_Image_3x_340f32cf-e8a8-4262-a684-0d664d7e58ce.jpg" alt="IMAGES">
+            <img src="images/Bliss_Shop_by_Concern_LP_Dry_Skin_Filter_Image_3x_5365fc07-a8d5-4b8d-b8cf-469bdde6d04c.jpg" alt="IMAGES">
+            <img src="images/Bliss_Shop_by_Concern_LP_Moisturizers-Firmness_Filter_Image_3x_91b93bb9-fcf4-4f7b-aeec-363b54971b88.jpg" alt="IMAGES">
+            <img src="images/Bliss_Shop_by_Concern_LP_I_m_Not_Sure_Filter_Image_3x_eb24b10e-f965-42f3-ac3b-9c727e6c756e.jpg" alt="IMAGES">      
+        </div>
+        <div class="A-dropDown">
+            <button>Sort 
+                <select name="" id="">
+                    <option value=""></option>
+                    <option value="">Featured</option>
+                    <option value="">Best Selling</option>
+                    <option value="">Price, low to high</option>
+                    <option value="">Price, high to low</option>
+                </select>
+            </button>
+            <button>Filter</button>
+        </div>
+    <div class="A-products">
+        <div class="Block1">
+            <div class="A-left">
+                <div class="A-bestSeller"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn1" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn1" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider1">
+                    <img src="images/lemonsage_body_butter_sku_1003_10000_01__74065.1674081148.1280.1280_400x400.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Benefits-ECommerce_JPG_9b6ece02-2fe3-4b1a-8b0a-f91ed5888212.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredients-ECommerce_JPG_0426d7ce-f912-4f06-938a-db3a9529837e.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredient2-ECommerce_JPG_a26fe555-81c4-4ec0-b2fd-ebe27bfe1538.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Lifestyle-ECommerce_JPG_ffc17ce3-c303-46ec-9057-ad84548f8e83.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_384490ff-b23f-4050-99f3-2def9ecc2931.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  4.5(600)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail1">
+                    <p>Lemon & Sage Body Butter</p> 
+                    <p>$13.00</p>
+                    <p>Lemon & Sage Maximum Moisture Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart1">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-discount"><h4>32% Off</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn2" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn2" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider2">
+                    <img src="images/Bliss-SeriouslySmoothKit-Soldier-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss-SeriouslySmoothKit-Benefits-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss-SeriouslySmoothKit-Apply-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss-SeriouslySmoothKit-Ingredients-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  5.0(2)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail2">
+                    <p>Seriously Smooth Skin Kit</p> 
+                    <p>$24.00 $19.00</p>
+                    <p>$28.00 VALUE</p>
+                    <p>Smooth out rough, bumpy skin with this Lemon & <br> Sage Duo!</p>
+                </div>
+                <div class="A-disppearingCart" id="cart2">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>           
+        <div class="Block2">
+            <div class="A-posters">
+                <img src="images/Bliss_Shop-by-Concern-PLP_Inline-Banner_Body-Moisturizers_Firmness_Mobile@2x-min.webp" alt="">
+            </div>
+            
+            <div class="A-right">
+                <div class="A-bestSeller2"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn3" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn3" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider3">
+                    <img src="images/hot_salt_scrub_sku_1003_10013_01__72307.1645663810.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/hot_salt_scrub_2__26580.1645663810.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/hot_salt_scrub_3__22605.1645663810.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/hot_salt_scrub_sku_1003_10013_01__72307.1645663810.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.7(12)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail3">
+                    <p>Self-Heating Sea Salt Scrub</p> 
+                    <p>$20.00</p>
+                    <p>Self-Heating Body Polish</p>
+                </div>
+                <div class="A-disppearingCart" id="cart3">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>  
+        </div>  
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn4" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn4" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider4">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__Soldier-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__IngredientsCallout-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__ProductClaims-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__ProductBenefits-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButters_Model-ECommerce_JPG_fca2ad4a-6844-47c8-a461-b23284e50dc9.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__Lifestyle-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_9db38998-e5bc-4683-8320-ca48660edaa7.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  4.5(377)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail4">
+                    <p>Naked Body Butter Unscented Moisturizer</p> 
+                    <p>$13.00</p>
+                    <p>Maximum Fragrance Free Moisture Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart4">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn5" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn5" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider5">
+                    <img src="images/grapefruitaloe_body_butter_sku_1003_10002_01__05959.1674081301.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButter_Grapefruit_Aloe_Benefits-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButter_Grapefruit_Aloe_ScentDescription-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__IngredientsCallout-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButters_Model-ECommerce_JPG_fca2ad4a-6844-47c8-a461-b23284e50dc9.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_9db38998-e5bc-4683-8320-ca48660edaa7.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  4.6(287)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail5">
+                    <p>Grapefruit & Aloe Body Butter</p> 
+                    <p>$13.00</p>
+                    <p>Grapefruit Maximum Moisture Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart5">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn6" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn6" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider6">
+                    <img src="images/poetic_waxing_sku_1003_10040_01__21989.1674080905.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/poetic_waxing_1__31124.1674080905.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/Poetic-Wax-key-ingredients__81150.1674080905.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  4.2(749)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail6">
+                    <p>Poetic Waxing At Home Wax Kit</p> 
+                    <p>$25.00</p>
+                    <p>Straight-from-the-Spa Hair Removal Kit</p>
+                </div>
+                <div class="A-disppearingCart" id="cart6">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-discount"><h4>31% Off</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn7" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn7" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider7">
+                    <img src="images/Bundle_6__LS_Body_Butter_Grapefruit_Body_Butter_Blood_Orange_Body_Butter_Naked_Body_Butter_all_full_size_200_ML_1__10748.1659723177.1280.1280.webp" alt="IMAGES">
+                    <img src="images/Holiday_Image_Resize_Body_Butter_Collection_01__30620.1666282522.1280.1280.webp" alt="IMAGES">
+                    <img src="images/Bliss_BodyButterMaximumMoistureCream_Naked_Unscented_6.7oz__Application-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_4f14d018-ecc5-4efd-a55c-2fdbe04aaf2f.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>Best Seller  4.7(1481)</h3>
+                </div>
+
+                <div class="prodDetail" id="prodDetail7">
+                    <p>Butter Together Body Butter Set</p> 
+                    <p>$42.00 $36.00</p>
+                    <p>$52 VALUE</p>
+                    <p>Cult-Fave Body Butter Quad</p>
+                </div>
+                <div class="A-disppearingCart" id="cart7">
+                    <h2>ADD TO BAG</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="Block2">
+            
+            <div class="A-right">
+                <div class="A-bestSeller"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn8" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn8" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider8">
+                    <img src="images/bloodorangewhitepepper_body_butter_sku_1003_10003_01__81918.1674081451.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButter_BloodOrange_Benefits-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButter_BloodOrange_ScentDescription-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButter_BloodOrange_Ingredients-ECommerce_JPG.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButters_Model-ECommerce_JPG_fca2ad4a-6844-47c8-a461-b23284e50dc9.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_9db38998-e5bc-4683-8320-ca48660edaa7.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.4(206)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail8">
+                    <p>Blood Orange & White Pepper Body <br> Butter</p> 
+                    <p>$13.00</p>
+                    <p>Maximum Orange Moisture Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart8">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div> 
+            
+            <div class="A-posters">
+                <img src="images/Bliss_Quiz-Site-Assets_Find-Your-Routine-Quiz-Inline-Banner_Desktop@2x.jpg" alt="">
+            </div>
+        </div> 
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn9" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn9" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider9">
+                    <img src="images/Bliss_SkinSmoothingBodyButter_Soldier-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_SkinSmoothingBodyButter_ProductBenefits-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_SkinSmoothingBodyButter_ProductClaims-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss-SkinSmoothingBodyButter.webp" alt="IMAGES">
+                    <img src="images/Bliss-SkinSmoothingBodyButter-1.webp" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_9db38998-e5bc-4683-8320-ca48660edaa7.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.6(81)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail9">
+                    <p>Texture Takedown Skin Smoothing <br>Body Butter</p> 
+                    <p>$15.00</p>
+                    <p>For Rough, Bumpy Skin</p>
+                </div>
+                <div class="A-disppearingCart" id="cart9">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn10" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn10" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider10">
+                    <img src="images/lemon_sage_body_wipes_sku_1003_30033_01__37530.1662483919.1280.1280.webp" alt="IMAGES">
+                    <img src="images/lemon_sage_body_wipes_1__80023.1662483919.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/lemon_sage_body_wipes_sku_1003_30033_01__37530.1662483919.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.9(8)</h3>
+                </div>
+
+                <div class="prodDetail" id="prodDetail10">
+                    <p>Lemon & Sage Refreshing Body <br>Wipes</p> 
+                    <p>$8.00</p>
+                    <p>With Natural Deodorant</p>
+                </div>
+                <div class="A-disppearingCart" id="cart10">
+                    <h2>ADD TO BAG</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn11" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn11" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider11">
+                    <img src="images/15_source_1571349390_400x400.jpg" alt="IMAGES">
+                    <img src="images/lemon_sage_hand_cream_2__91567.1643243415.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.5(604)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail11">
+                    <p>Lemon & Sage Hand Cream 1.7 oz <br> Mini</p> 
+                    <p>$5.00</p>
+                    <p>Your favorite scent now in travel size</p>
+                </div>
+                <div class="A-disppearingCart" id="cart11">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn12" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn12" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider12">
+                    <img src="images/Bliss_-_Lemon_Sage_Body_Butter_b0fe91e5-01ee-434d-95b1-bbd8d7cea842.jpg" alt="IMAGES">
+                    <img src="images/lemonsage_soapy_suds_sku_1003_10020_01__20984.1674081183.1280.1280.webp" alt="IMAGES">
+                    <img src="images/lemon_sage_soapy_suds_2__10203.1674081183.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/LS-Soapy-Suds-what-it-does__85991.1674081183.1280.1280.webp" alt="IMAGES">
+                    <img src="images/LS-Soapy-Suds-key-ingredients_2__09811.1674081183.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.6(137)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail12">
+                    <p>Lemon & Sage Soapy Suds Body <br> Wash</p> 
+                    <p>$14.00 - $22.00</p>
+                    <p>Lemon & Sage Body Wash with Aloe</p>
+                </div>
+                <div class="A-disppearingCart" id="cart12">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller purple" ><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn13" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn13" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider13">
+                    <img src="images/Bundle_1__LS_Soapy_Suds_LS_Body_Butter__71793.1643933135.1280.1280.webp" alt="IMAGES">
+                    <img src="images/Holiday_Image_Resize_Brighter_Lemon_Sage_body_butter_soapy_suds_01__58456.1666282492.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.5(754)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail13">
+                    <p>Lemon Love Duo</p> 
+                    <p>$29.00 $24.00</p>
+                    <p>$35 VALUE</p>
+                </div>
+                <div class="A-disppearingCart" id="cart13">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Best Seller</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn14" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn14" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider14">
+                    <img src="images/BLISS_Aloe_Leaf_Peppermint_FOOT_CREAM_120mlxNEWTUBE__11001.1674081429.1280.1280.webp" alt="IMAGES">
+                    <img src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                    <img src="images/aloe_leafpeppermint_foot_cream_pro_sku_1007_70011_01__52989.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.6(137)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail14">
+                    <p>Aloe Leaf & Peppermint Foot Cream</p> 
+                    <p>$10.00</p>
+                    <p>Super Softening & AHA Exfoliating Cooling Foot <br> Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart14">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn15" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn15" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider15">
+                    <img src="images/lemonsage_satinskin_body_polish_sku_1003_10014_01__12224.1674081164.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/lemon_sage_body_polish_2__41813.1674081164.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/lemon_sage_body_polish_3__45064.1674081164.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.3(36)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail15">
+                    <p>Lemon & Sage Satin-Skin Body Scrub</p> 
+                    <p>$15.00</p>
+                    <p>With Shea Butter & Coconut Oil</p>
+                </div>
+                <div class="A-disppearingCart" id="cart15">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn16" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn16" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSliderR8">
+                    <img src="images/Bliss_Accessories_Dual-SidedBack_BodyBrush_Blue_Soldier2-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.3(6)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail16">
+                    <p>Go Scrubs Exfoliating Back & Body <br> Brush</p> 
+                    <p>$15.00</p>
+                    <p>Dual-Sided Body Scrubber</p>
+                </div>
+                <div class="A-disppearingCart" id="cart16">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn16" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn16" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider16">
+                    <img src="images/Ingrown_Hair_Eliminating_Solution_Front__71857.1674081250.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/Ingrown_Hair_Eliminating_Solution_Swatch_A__27308.1674081250.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.8(26)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail17">
+                    <p>Ingrown Hair & Razor Bump <br> Eliminating Solution</p> 
+                    <p>$20.00</p>
+                    <p>For The Body With Salicylic & Glycolic Acids</p>
+                </div>
+                <div class="A-disppearingCart" id="cart17">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 purple"><h4>31% Off</h4></div>
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn16" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn16" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSlider17">
+                    <img src="images/wax.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.2(778)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail18">
+                    <p>Wax & Relax Hair Removal Kit</p> 
+                    <p>$36.00 $31.00</p>
+                    <p>$45 VALUE</p>
+                    <p>Spa Hair Removal Duo</p>
+                </div>
+                <div class="A-disppearingCart" id="cart18">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <!-- <div class="A-bestSeller purple" ><h4>Best Seller</h4></div> -->
+                <!-- <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn13" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn13" class="nextBtn">
+                </div> -->
+                <div class="productSlider" id="productSlider18">
+                    <img src="images/Bliss_Accessories_MicrofiberHairTurbanDuo_Blue_Packaging-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail19">
+                    <p>Rooting For You Microfiber Hair Wrap Duo-Blue</p> 
+                    <p>$14.00</p>
+                    <p>Quick-drying hair turban</p>
+                </div>
+                <div class="A-disppearingCart" id="cart19">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <!-- <div class="A-bestSeller2 black"><h4>Best Seller</h4></div> -->
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn19" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn19" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider19">
+                    <img src="images/Bliss_Accessories_SiliconeScalpMassager_Blue_Soldier-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_Accessories_SiliconeScalpMassager_Blue_SoldierBack-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_Accessories_SiliconeScalpMassager_Blue_SoldierFront-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(2)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail20">
+                    <p>Rooting For You Scalp Massager</p> 
+                    <p>$8.00</p>
+                    <p>Boosts scalp health for stronger hair</p>
+                </div>
+                <div class="A-disppearingCart" id="cart20">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <!-- <div class="A-bestSeller purple" ><h4>Best Seller</h4></div> -->
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn20" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn20" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider20">
+                    <img src="images/Bliss_Accessories3-PackExfoliatingGloveSet_PackagingFrontwithproduct_Soilder_PDP-ECommerce_JPG_fc607c31-591d-40e3-a576-9595d6cbac83.webp" alt="IMAGES">
+                    <img src="images/Bliss_Accessories3-PackExfoliatingGloveSet_Yellow_Soilder_PDP-ECommerce_JPG_1_1128d6c5-2ca3-40f0-9376-d1eb6a76900d.webp" alt="IMAGES">
+                    <img src="images/Bliss_Accessories3-PackExfoliatingGloveSet_Pink_Soilder_PDP-ECommerce_JPG_2e5a4485-af8a-4489-848e-b406bdecfa9d.webp" alt="IMAGES">
+                    <img src="images/Bliss_Accessories3-PackExfoliatingGloveSet_Blue_Soilder_PDP-ECommerce_JPG_1_49d854bf-62bc-40c0-8b77-9d3921c863e1.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail21">
+                    <p>Go Scrubs Face + Body Exfoliating <br> Gloves-Pink/Yellow/Blue</p> 
+                    <p>$15.00</p>
+                    <p>Promotes circulation and silky smooth skin</p>
+                </div>
+                <div class="A-disppearingCart" id="cart21">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <!-- <div class="A-bestSeller2 black"><h4>Best Seller</h4></div> -->
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn17" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn17" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSlider21">
+                    <img src="images/Bliss_Accessories_MicrofiberHairTurbanDuo_Pink_Packaging-ECommerce_JPG_8968e2d3-7d69-4867-a096-4205ed69783b.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(2)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail22">
+                    <p>Rooting For You Microfiber Hair <br> Wrap Duo-Pink</p> 
+                    <p>$14.00</p>
+                    <p>Quick-drying hair turban</p>
+                </div>
+                <div class="A-disppearingCart" id="cart22">
+                    <h2>ADD TO BAG</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller black" ><h4>Sold Out</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn22" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn22" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider22">
+                    <img src="images/Bliss_-_Lemon_Sage_Body_Butter_b0fe91e5-01ee-434d-95b1-bbd8d7cea842.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Benefits-ECommerce_JPG_9b6ece02-2fe3-4b1a-8b0a-f91ed5888212.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredients-ECommerce_JPG_0426d7ce-f912-4f06-938a-db3a9529837e.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredient2-ECommerce_JPG_a26fe555-81c4-4ec0-b2fd-ebe27bfe1538.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Lifestyle-ECommerce_JPG_ffc17ce3-c303-46ec-9057-ad84548f8e83.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_384490ff-b23f-4050-99f3-2def9ecc2931.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail23">
+                    <p>Lemon & Sage Body Butter 32 oz</p> 
+                    <p>$60.00</p>
+                    <p>Lemon & Sage Maximum Moisture Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart23">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn17" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn17" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSlider23">
+                    <img src="images/Bliss_Cloud9_HandSoap_LemonandSage_Soldier-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>0.0(0)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail24">
+                    <p>Cloud 9 Hydrating Hand Soap, <br> Lemon & Sage With Aloe Vera & <br> Hyaluronic Acid</p> 
+                    <p>$10.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart24">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller black" ><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn20" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn20" class="nextBtn">
+                </div> -->
+                <div class="productSlider" id="productSliderL24">
+                    <img src="images/Bliss_Cloud9_Conditioner_LemonandSage_Soldier-ECommerce_PNG.webp" alt="IMAGES">
+                    <!-- <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Benefits-ECommerce_JPG_9b6ece02-2fe3-4b1a-8b0a-f91ed5888212.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredients-ECommerce_JPG_0426d7ce-f912-4f06-938a-db3a9529837e.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredient2-ECommerce_JPG_a26fe555-81c4-4ec0-b2fd-ebe27bfe1538.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Lifestyle-ECommerce_JPG_ffc17ce3-c303-46ec-9057-ad84548f8e83.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_384490ff-b23f-4050-99f3-2def9ecc2931.webp" alt="IMAGES"> -->
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>1.0(2)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail25">
+                    <p>Supershine Conditioner, Lemon & <br> Sage With Avocado & Coconut Oils <br> and Shea Butter</p> 
+                    <p>$42.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart25">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn17" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn17" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSlider25">
+                    <img src="images/Bliss_Cloud9_Conditioner_LemonandSage_Soldier-ECommerce_PNG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>0.0(0)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail26">
+                    <p>Cloud 9 Hydrating Body Moisturizer, <br> Lemon & Sage With Shea Butter and <br> Hyaluronic Acid</p> 
+                    <p>$38.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart26">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller black"><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn20" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn20" class="nextBtn">
+                </div> -->
+                <div class="productSlider" id="productSlider26">
+                    <img src="images/Bliss_Cloud9_Conditioner_LemonandSage_Soldier-ECommerce_PNG.webp" alt="IMAGES">
+                    <!-- <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Benefits-ECommerce_JPG_9b6ece02-2fe3-4b1a-8b0a-f91ed5888212.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredients-ECommerce_JPG_0426d7ce-f912-4f06-938a-db3a9529837e.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredient2-ECommerce_JPG_a26fe555-81c4-4ec0-b2fd-ebe27bfe1538.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Lifestyle-ECommerce_JPG_ffc17ce3-c303-46ec-9057-ad84548f8e83.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_384490ff-b23f-4050-99f3-2def9ecc2931.webp" alt="IMAGES"> -->
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>1.1(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail27">
+                    <p>Cloud 9 Nourishing Body Wash, <br> Lemon & Sage With Aloe Vera & <br> Hyaluronic Acid</p> 
+                    <p>$28.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart27">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn17" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn17" class="nextbtn">
+                </div> -->
+                <div class="productSlider" id="productSlider27">
+                    <img src="images/Bliss_OffPrice_BloodOrange_Conditioner_Soldier-ECommerce_JPG_1.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>1.0(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail28">
+                    <p>Supershine Conditioner, Blood <br> Orange & White Pepper With <br> Avocado & Coconut Oils and Shea <br> Butter</p> 
+                    <p>$42.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart28">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller black"><h4>Sold Out</h4></div>
+                <!-- <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn20" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn20" class="nextBtn">
+                </div> -->
+                <div class="productSlider" id="productSlider28">
+                    <img src="images/Bliss_OffPrice_BloodOrange_Conditioner_Soldier-ECommerce_JPG_1.webp" alt="IMAGES">
+                    <!-- <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Benefits-ECommerce_JPG_9b6ece02-2fe3-4b1a-8b0a-f91ed5888212.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredients-ECommerce_JPG_0426d7ce-f912-4f06-938a-db3a9529837e.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Ingredient2-ECommerce_JPG_a26fe555-81c4-4ec0-b2fd-ebe27bfe1538.jpg" alt="IMAGES">
+                    <img src="images/Bliss-BodyButterMaximumMoistureCream_Lemon_Sage-Lifestyle-ECommerce_JPG_ffc17ce3-c303-46ec-9057-ad84548f8e83.jpg" alt="IMAGES">
+                    <img src="images/Bliss_BodyButtersComparisonChart-ECommerce_JPG_384490ff-b23f-4050-99f3-2def9ecc2931.webp" alt="IMAGES"> -->
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>3.0(1)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail29">
+                    <p>Supershine Shampoo, Blood Orange <br> & White Pepper With Vita-Shea <br> Blend (Vitamins B3, C and E)</p> 
+                    <p>$42.00</p>
+                    <p>Excluded from promotions</p>
+                </div>
+                <div class="A-disppearingCart" id="cart29">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Sold Out</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn29" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn29" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider29">
+                    <img src="images/Bliss-ClearGeniusBodyAcneSpray.webp" alt="IMAGES">
+                    <img src="images/Bliss_ClearGeniusAcneSpray_ConsumerTestingResults-updatedjanuary2024-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_ClearGeniusAcneSpray_HowToUse-UpdatedJanuary2024-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_ClearGeniusAcneSpray_KeyIngredients-Updatedjanuary2024-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_ClearGeniusAcneSpray_ProductBenefits-UpdatedJanuary2024-ECommerce_JPG.webp" alt="IMAGES">
+                    <img src="images/Bliss_ClearGeniusFranchiseGroup_Lifestye2_UpdatedJanuary2024-ECommerce_JPG.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>4.6(692)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail30">
+                    <p>Clear Genius Body Acne Spray</p> 
+                    <p>$18.00</p>
+                    <p>Maximum Strength Salicylic Acid Spray</p>
+                </div>
+                <div class="A-disppearingCart" id="cart30">
+                    <h2>Sold Out</h2>
+                </div> 
+            </div>
+        </div>
+        <div class="Block1 mt">
+            <div class="A-left">
+                <div class="A-bestSeller black"><h4>Sold Out</h4></div>
+                <div class="A-scrollBtnsL">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn30" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn30" class="nextBtn">
+                </div>
+                <div class="productSlider" id="productSlider30">
+                    <img src="images/BLISS_Minty_Scrub_Soap_BAR_LOGO_FINAL__36040.1674081029.1280.1280.jpg" alt="IMAGES">
+                    <img src="images/BLISS_Minty_Scrub_Soap_BAR_STUDS_FINAL__56828.1674081029.1280.1280.jpg" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>3.2(80)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail31">
+                    <p>Mint Scrub Soap</p> 
+                    <p>$16.00</p>
+                    <p>Super-Cooling Mint Bath Bar</p>
+                </div>
+                <div class="A-disppearingCart" id="cart31">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            <div class="A-right">
+                <div class="A-bestSeller2 black"><h4>Sold Out</h4></div>
+                <div class="A-scrollBtnsR">
+                    <img src="images/PLP_PREV.png" alt="IMAGES" id="prevBtn31" class="prevBtn">
+                    <img src="images/PLP_Next.png" alt="IMAGES" id="nextBtn31" class="nextbtn">
+                </div>
+                <div class="productSlider" id="productSlider31">
+                    <img src="images/oh_thats_rich_sku_1003_10012_01__32704.1659724524.1280.1280.webp" alt="IMAGES">
+                    <img src="images/oh_thats_rich_body_cream_2__08329.1659724524.1280.1280.webp" alt="IMAGES">
+                    <img src="images/oh_thats_rich_body_cream_4__80447.1659724524.1280.1280.webp" alt="IMAGES">
+                    <img src="images/oh_thats_rich_sku_1003_10012_01__32704.1659724524.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="stars">
+                    <img src="images/rating.png" alt="IMAGES">
+                    <h3>5.0(3)</h3>
+                </div>
+                <div class="prodDetail" id="prodDetail32">
+                    <p>Oh, That's Rich Body Lotion for Dry <br> Skin</p> 
+                    <p>$20.00</p>
+                    <p>Ultra Silky-Sheen Body Cream</p>
+                </div>
+                <div class="A-disppearingCart" id="cart32">
+                    <h2>Sold Out</h2>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="Block1 mt" id="Block3">
+            
+        </div>
+        <div class="navigation">
+            <button><a href="page1.html" style="text-decoration: none; color: black;"><h4><</h4></a></button>
+            <button><a href="page1.html" style="text-decoration: none; color: black;"><h4>1</h4></a></button>
+            <button style=" border-bottom: 5px solid  black;"><a href="page1.html" style="text-decoration: none; color: black;"><h4>2</h4></a></button>
+            
+
+        </div>
+    </div>
+  
+    
+</div>
+<div class=".prod_3_cont"
+style="background-color:#e8f6f9; background-color: rgb(232,246,249); height: 400px; padding-top: 30px;">
+<div id="txt">
+    <p>_____________________ Discover even more to love from our sister brands. ____________________</p>
+</div>
+<div class="prod_3">
+    <div>
+        <img src="./images/laura_geller_1.png" alt="">
+    </div>
+    <div>
+        <img src="./images/julep_1.png" alt="">
+    </div>
+    <div>
+        <img src="./images/coverfx_1.png" alt="">
+    </div>
+</div>
+</div>
+
+<div class="bottom_item">
+    <div id="item"><p>free shipping on orders $45+</p></div>
+    <div id="item2"><p>we ship internationally</p></div>
+</div>
+<div class="footer">
+    <div class="foot_1">
+        <div class="foot_item">
+            <h2>COMPANY</h2>
+            <ul>
+                <li>Who We Are</li>
+                <li>Find a Bliss Near You</li>
+                <li>Shop</li>
+                <li>Privacy policy</li>
+                <li>Terms & Conditions</li>
+                <li>Accessibility Statement</li>
+                <p>&copy Bliss World Store</p>
+            </ul>
+        </div>
+        <div class="foot_item">
+            <h2>FOR YOU</h2>
+            <ul>
+                <li>Gifts cards</li>
+                <li>Contact us</li>
+                <li>Shipping</li>
+                <li>Returns</li>
+                <li>Payment & Gift Cards</li>
+                
+            </ul>
+        </div>
+        <div class="foot_item">
+            <h2>QUICK SHOP</h2>
+            <ul>
+                <li>Skincare</li>
+                <li>Body Care</li>
+                <li>Travel Size</li>
+                <li>Fabgirl</li>
+                <li>Serums</li>
+                <li>SPF</li>
+                <li>Accessories</li>
+                
+            </ul>
+        </div>
+        <div class="foot_item">
+            <h2>STAY IN TOUCH</h2>
+            <h3>Sign up for our newsletter to receive 20% off your first order!</h3>
+            <input id="email" type="text" placeholder="Email Address"> <button>submit</button>
+            <p>By signing up for our newsletter, you agree to our <a href="terms.html"><span>terms</span> </a> and <span>privacy policy</span></p>
+            
+            <h3>Prefer texting? Sign up for texts to receive SMS exclusive <br> <br>offers plus 20% off your first order</h3>
+            <input id="number" type="text" placeholder="Phone number"> <button>submit</button>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet <br>laboriosam sapiente laborum temporibus, distinctio deleniti doloribus <br>veritatis voluptatibus labore cupiditate animi voluptates <br>necessitatibus voluptatum natus explicabo totam ratione, <br>praesentium eos deserunt quod neque fugit magnam quae! Modi <br>accusantium rem sed labore, sunt quo <br>dolorem est sequi perspiciatis tempora et culpa? <span>terms</span>  and <span>privacy policy</span></p>
+        </div>
+    </div>
+    <div class="foot_2">
+        <h2>@blissworld</h2>
+        <div class="social">
+        <img src="./images/FB_Icon_3x_2bac5f83-7ad5-4e7d-9827-b63a02ac75a9.png" alt=""style="width: 40%; cursor: pointer;"><br><br>
+        <img src="./images/Pinterest_Icon_3x_d086b6e0-0fda-40d4-9d89-8d965fc8ad17.png" alt="" style="width: 40%; cursor: pointer;"><br><br>
+        <img src="./images/IG_Icon_3x_489a17ea-3252-4165-a9af-39eab18e5b83.png" alt="" style="width: 40%; cursor: pointer;"><br><br>
+        <img src="./images/YT_Icon_3x_d592299d-007b-4eeb-a0f4-e070a910f23e.png" alt="" style="width: 40%; cursor: pointer;"><br><br>
+        <img src="./images/TikTok_Icon_59211691-3d4a-43e6-b1d8-d74912adb2cc.png" alt="" style="width: 40%; cursor: pointer;">
+    </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="pg1Script.js"></script>
+<script src="dashJS.js"></script>
+</body>
+</html>

@@ -599,13 +599,20 @@ $(document).ready(function() {
      $("#cart1, #cart2, #cart3, #cart4, #cart5, #cart6, #cart7, #cart8, #cart9, #cart10, #cart11, #cart12, #cart13, #cart14, #cart15, #cart16, #cart17, #cart18, #cart19, #cart20, #cart21, #cart22, #cart23, #cart24, #cart25, #cart26, #cart27, #cart28, #cart29, #cart30, #cart31")
      .click(function(){
           $(".blissCart").show()
+          $(".overlay").show()
      })
      $("#cartClose").click(function(){
           $(".blissCart").hide()
+          $(".overlay").hide()
+     })
+     $("#cartClose2").click(function(){
+          $(".blissCart").hide()
+          $(".overlay").hide()
      })
      
      $("#B-cart").click(function(){
           $(".blissCart").show()
+          $(".overlay").show()
      })
      /////////////////////////////////////////////
      $("#prodDetail1").click(function(){
@@ -613,5 +620,17 @@ $(document).ready(function() {
      })
      /////////////////////////////////////////////
      
-     
+     $('#B-cart').on('click', function() {
+          var Content = $("#prodtext").html();
+          var image = $("#prodimage").html()
+
+          $('#carttext').html(Content);
+          var newImageSrc = $('#B-productSlider img').first().attr('src');
+                $('.cart-image').attr('src', newImageSrc);
+
+      });
+
+      //////////////////////////////////////////////////////
+
+      
 })

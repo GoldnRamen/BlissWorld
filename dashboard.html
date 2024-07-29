@@ -35,7 +35,7 @@
                                     <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
                         
                             
-                                    <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
+                                    <a href="cart.html"><img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
                                 </div>        
             
                         </div>
@@ -61,110 +61,215 @@
             </div>
             <div class="dashBoard-body">
                 <div class="body-left">
-                    <div class="merch-profile">
+                    <div class="merch-profile" id="merch-profile">
                         <img src="images/images (30).jpeg" alt="IMAGES">
                         <h2 id="merchantName">Merchant Name</h2>
                     </div>
                     <div class="merch-menu">
-                        <p>some detail</p>
+                        <p id="createProd" style="cursor: pointer;">Create Product</p>
                         <hr>
-                        <p>some detail</p>
+                        <p id="createCategory" style="cursor: pointer;">Create a new Category</p>
                         <hr>
-                        <p>some detail</p>
+                        <p id="showCategories" style="cursor: pointer;">Show all Categories</p>
                         <hr>
-                        <p>some detail</p>
+                        <p id="showProducts" style="cursor: pointer;">Show products</p>
                         <hr>
-                        <p>some detail</p>
+                        <p id="changePassword" style="cursor: pointer;">Change Profile Password</p>
                         <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
-                        <hr>
-                        <p>some detail</p>
+                        <!--<p id="showCategories" style="cursor: pointer;">Show all Categories</p>
+                        <hr> -->
+                        <p id="merchantLogout">Log Out</p>
                         <hr>
                     </div>
                     
                 </div>
-                <div class="body-right"></div>
+                <div class="body-right" style="padding-left: 20px; padding-right: 20px;">
+                    <div class="createPage none" id="createPage">
+                        <form action="" id="createForm">
+                            <label for="" style="text-align: center;"><h1>Create your product here</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div>
+                                <input type="text" placeholder="Enter product name" id="productName">
+                                <p></p>
+                                <p class="Errr" id="productNameErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter product description" id="productDescp">
+                                <p class="Errr" id="productDescpErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter product price" name="" id="productPrice">
+                                <p class="Errr"  id="productPriceErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter product brand" name="" id="brandName">
+                                <p class="Errr"  id="brandNameErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="number" placeholder="Enter product quantity" name="" id="productQuantity">
+                                <p class="Errr"  id="productQuantityErr"></p>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's image</label>
+                                <input type="text" id="productImage">
+                                <p class="Errr"  id="productImageErr"></p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 40px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your product's currency</label>
+                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                    <p style="margin: 0;">Naira</p>
+                                    <input type="checkbox" id="productCurrencyNaira">
+                                    <p class="Errr"  id="productCurrencyErr"></p>
+                                </div>
+                                <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                    <p style="margin: 0;">Dollars</p>
+                                    <input type="checkbox" id="productCurrencyDollars">
+                                    <p class="Errr"  id="productCurrencyErr"></p>
+                                </div>
+                                <div>
+                                    <p id="productCurrency"></p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <input type="number" placeholder="Enter product minimum-quantity" name="" id="productMinQuantity">
+                                <p class="Errr"  id="productMinQuantityErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="number" placeholder="Enter product maximum-quantity" name="" id="productMaxQuantity">
+                                <p class="Errr"  id="productMaxQuantityErr"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter product discount" name="" id="productDiscount">
+                            </div>
+                            
+                            <!-- <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                                <label for="" style="border-bottom: .5px solid black; width: fit-content;">Select product discount expiration date</label>
+                                <input type="date" name="" id="productDiscountDate">
+                            </div> -->
+                            
+                            <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                                <label for="" style="border-bottom: .5px solid black; width: fit-content;">Refund available</label>
+                                <input type="checkbox" id="productRefund">
+                                <p id="productRefundText"></p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                                <label for="" style="border-bottom: .5px solid black; width: fit-content;">Discount available</label>
+                                <input type="checkbox" id="productDiscount2">
+                                <p id="productDiscount2Text"></p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                                <label for="" style="border-bottom: .5px solid black; width: fit-content;">Shipping available</label>
+                                <input type="checkbox" id="productShipping">
+                                <p id="productShippingText"></p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 20px; align-items: center; padding: 5px;">
+                                <label for="" style="border-bottom: .5px solid black; width: fit-content;">Shipping locations</label>
+                                <div style="display: flex; gap: 50px;">
+                                    <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                        <p style="margin: 0;">Nigeria</p>
+                                        <input type="checkbox" id="nigeria">
+                                    </div>
+                                    <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                        <p style="margin: 0;">Ghana</p>
+                                        <input type="checkbox" id="ghana">
+                                    </div>
+                                    <div style="display: flex; gap: 20px; align-items: center; border: .5px solid gray; border-radius: 10px; padding: 5px;">
+                                        <p style="margin: 0;">South Africa</p>
+                                        <input type="checkbox" id="south_africa">
+                                    </div>
+                                </div>
+                                <p id="locationTextN"></p>
+                                <p id="locationTextG"></p>
+                                <p id="locationTextS"></p>
+                            </div>
+
+                            <div class="display: flex; flex-direction: column">
+                                <label for="" id="otherBtn">Other</label>
+                               <div class="none" id="otherDrop" style="flex-direction: column; gap: 50px; cursor: pointer;">
+                                <input type="text" placeholder="Place of Origin" id="productOrigin">
+                                <input type="text" placeholder="Brand Name" id="productBrandName">
+                                <input type="text" placeholder="Midsole Category" id="productMidsoleCategory">
+                                <input type="text" placeholder="Season" id="productSeason">
+                                <input type="text" placeholder="Gender" id="productGender">
+                                <input type="text" placeholder="Supply Ability" id="productSupplyAbility">
+                               </div>
+                            </div>
+
+                            <div>
+                                <input type="text" placeholder="Enter Product Category ID" id="productCategoryID">
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter Merchant ID" id="currentMerchantID">
+                                <label for="">Merchant ID</label>
+                                <p id="merchId2"></p>
+                            </div>
+                            
+                            <button id="submitProduct" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>          
+                    <div class="createPage none" id="categoryPage">
+                        <form action="" id="categoryForm">
+                            <label for="" style="text-align: center;"><h1>Create Category</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div style="display: flex; gap: 50px;">
+                                <input type="text" placeholder="Enter merchant ID" id="catMerchName">
+                                <p id="merchId"></p>
+                            </div>
+                            
+                            <div>
+                                <input type="text" placeholder="Enter your category name" id="categoryName">
+                            </div>
+                            
+                           <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <label for="" style="border-bottom: 1px solid black; width: fit-content;">Choose your category Image</label>
+                                <input type="text" id="categoryImage">
+                            </div>
+                            <button id="submitCategory" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>
+                    <div class="createPage none" id="allCategories" style="margin-top: 20px; padding-left: 20px; padding-right: 20px;">
+                        <label for="" style="text-align: center;"><h1>All Categories</h1></label>    
+                    </div>
+                    <div class="createPage none" id="allProducts" style="margin-top: 20px; padding-left: 20px; padding-right: 20px;">
+                        <label for="" style="text-align: center;"><h1>All Products from this Merchant</h1></label>
+                        
+                    </div>
+                    <div class="createPage none" id="passwordChange" style="margin-top: 20px;">
+                        <form action="" style="margin-left: 30px;" id="merchantPasswordForm">
+                            <label for="" style="text-align: center;"><h1>Create Category</h1></label>
+                            <hr>
+                            <br>
+                            <br>
+                            <div style="display: flex; gap: 30px;">
+                                <input type="text" style="border: none; border-bottom: 2px solid black; width: 250px; height: 40px;" placeholder="Enter your Old Password" id="merchantpassword1">
+                                <input type="text" style="border: none; border-bottom: 2px solid black; width: 250px; height: 40px;" placeholder="Enter your new Password" id="merchantpassword2">
+                            </div>
+                            
+                            <button id="submitPassword" style="width: 150px; margin-top: 20px; padding: 10px; color: white; background-color: rgb(80, 46, 8); border: none;">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
         <script src="pg1Script.js"></script>
+        <script src="dashJS.js"></script>
     </body>
 </html>

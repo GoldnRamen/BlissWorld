@@ -16,6 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Frank Ruhl Libre' rel='stylesheet'>
 </head>
 <body>
+    <div class="overlay"></div>
     <div class="header">
         <a href="">
             <p>Free shipping on U.S orders $50+. Free Returns.International Shipping !</p>
@@ -37,7 +38,7 @@
                         <a href="login.html"><img src="./images/user.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
             
                 
-                        <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;">
+                        <a href="cart.html"><img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px; cursor: pointer;"></a>
                     </div>
                 
 
@@ -65,7 +66,7 @@
         <div class="cart-top">
             <div style="border-bottom: 1px solid black; ">
                 <div><h5>Your Bag</h5></div>
-            <div id="cartClose" style="position: fixed; top: 5px; right: 30px; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 100; cursor: pointer;"><h3>X</h3></div>
+            <div id="cartClose2" style="position: fixed; top: 5px; right: 30px; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 100; cursor: pointer;"><h3>X</h3></div>
             </div>
             <div style="align-items: center; margin-top: 10px;">
                 <div class="cart-top-bar"></div>
@@ -76,11 +77,11 @@
         <div class="cart-mid">
             <div class="cart-item">
                 <div class="cart-img">
-                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                    <img class="cart-image" id="cartimage"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
                 </div>
                 <div class="cart-text">
                     <div>
-                        <h3>self heating seasalt scrubs</h3>
+                        <h3 id="carttext">self heating seasalt scrubs</h3>
                     </div>
                     <div class="cart-Btns" style="text-align: center;">
                         <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
@@ -93,7 +94,7 @@
                     <h5>$100.00</h5>
                 </div>    
             </div>
-            <div class="cart-item">
+            <!-- <div class="cart-item">
                 <div class="cart-img">
                     <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
                 </div>
@@ -150,6 +151,44 @@
                     <h5>$100.00</h5>
                 </div>    
             </div>
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div>
+            <div class="cart-item">
+                <div class="cart-img">
+                    <img class="cart-image"  src="images/aloe_peppermint_foot_cream_2__35329.1674081429.1280.1280.webp" alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>self heating seasalt scrubs</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">1</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" style="display: flex; flex-direction: column; align-items: right;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$100.00</h5>
+                </div>    
+            </div> -->
             
         </div>
         <div class="cart-bottom" style="border-top: 1px solid black;">
@@ -183,11 +222,11 @@
         </div>  
         <div class="B-Data">
             <div class="B-stars">
-                <img src="images/rating.png" alt="IMAGES">
+                <img id="prodimage" src="images/rating.png" alt="IMAGES">
                 <h3>Write a review</h3>
             </div>
             <div class="B-prodDetail">
-                <p><h2>Seriously Smooth Skin Kit</h2></p> 
+                <p><h2 id="prodtext">Seriously Smooth Skin Kit</h2></p> 
                 <p>Smooth out rough, bumpy skin with this Lemon & Sage Duo!</p>
                 <p>$24.00 $19.00 $28.00 VALUE</p>
                 <p>*Excluded from promotions</p>
@@ -498,7 +537,7 @@
             </div>
         </div>
     </div>
-    <div class="filterReviews">
+    <div class="filterReviews" style="margin-left: 10px; margin-right: 10px;">
         <h2>Filter Reviews</h2>
         <div class="filterbar">
             <input type="text" placeholder="Search topics and reviews">

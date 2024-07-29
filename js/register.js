@@ -84,7 +84,7 @@ $(document).ready(function(){
            
         }
     });
-
+   
     $("#merchRegForm").on("submit", function(e) {
         e.preventDefault();
 
