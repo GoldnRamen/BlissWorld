@@ -389,8 +389,6 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            
-
                                   `)
                                   
                     })
@@ -408,7 +406,7 @@ $(document).ready(function(){
         })
     })
    
-    $(".prodDetail").hover(
+    $(document).on("hover", ".prodDetail",
         function() {
             $(this).closest(".A-left").find(".A-disppearingCart").removeClass("none");
         },
@@ -417,6 +415,230 @@ $(document).ready(function(){
         }
     );
     
+
+    $(document).on("click", ".A-left", function(){
+        var product = $(this).data("id")
+        
+        $.ajax({
+            url: `${api_name}/products/${product}`,
+            method: "GET",
+            success: function(p){
+                // console.log(productss)
+               
+                alert("So this happened")
+                localStorage.setItem("clickedProduct", JSON.stringify(p))
+                window.location.href = `page2.html?id=${product}`               
+                
+            },
+            error: function(error){
+                console.log("error")
+            }
+        })
+    })
+
+    $("#showB1").click(
+        function(){
+             $("#showB1").hide()
+             $("#collB1").show()
+             $("#conten1").toggle()          
+       })
+       $("#collB1").click(
+        function(){
+             $("#showB1").show()
+             $("#collB1").hide()
+             $("#conten1").toggle()          
+       })
+       $("#showB2").click(
+        function(){
+             $("#showB2").hide()
+             $("#collB2").show()
+             $("#conten2").toggle()          
+       })
+       $("#collB2").click(
+        function(){
+             $("#showB2").show()
+             $("#collB2").hide()
+             $("#conten2").toggle()          
+       })
+       $("#showB3").click(
+        function(){
+             $("#showB3").hide()
+             $("#collB3").show()
+             $("#conten3").toggle()          
+       })
+       $("#collB3").click(
+        function(){
+             $("#showB3").show()
+             $("#collB3").hide()
+             $("#conten3").toggle()          
+       })
+       $("#showB4").click(
+        function(){
+             $("#showB4").hide()
+             $("#collB4").show()
+             $("#conten4").toggle()          
+       })
+       $("#collB4").click(
+        function(){
+             $("#showB4").show()
+             $("#collB4").hide()
+             $("#conten4").toggle()          
+       })
+   
+    var productinfo = localStorage.getItem("clickedProduct")
+    if(productinfo){
+        var p = JSON.parse(productinfo)
+        $("#B-head").append( `
+                <div class="B-leftSideImages">
+                    <img src="${p.images}" alt="IMAGES">     
+                </div>
+                
+                <div class="B-catalog"> 
+                    <div class="B-productSlider" data-id= ${p.id}">
+                        <img src="${p.images}" alt="IMAGES">
+                    </div>    
+                </div> 
+
+                <div class="B-Data">
+                    <div class="B-stars">
+                        <img src="images/rating.png" alt="IMAGES">
+                        <h3>Write a review</h3>
+                    </div>
+                    <div class="B-prodDetail">
+                        <p><h2>${p.title}</h2></p> 
+                        <p>${p.descp}</p>
+                        <p>$${p.price} VALUE</p>
+                        <p>*Excluded from promotions</p>
+                        <div class="B-grand">
+                            <div class="B-quantity">
+                                <button id="subB${p.id}">-</button>
+                                <h4 id="B-quanInput${p.id}">1</h4>
+                                <button id="addB${p.id}">+</button>
+                            </div>
+                            <div class="B-cart" id="B-cart${p.id}">
+                                <h2>ADD TO BAG</h2>
+                            </div>
+                        </div>
+                        <hr style="height: .1px; width: 100%; background-color: black;">
+                    </div>
+                    <div class="B-drop">
+                        <div class="cli">
+                            <h4>WHAT IT IS</h4>
+                            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                <button class="showBtn" id="showB1">+</button>
+                                <button class="collapseBtn" id="collB1">-</button>
+                            </div>
+                        </div>
+                        <div class="conten" id="conten1">
+                            Rough, bumpy skin? No thanks. This supremely satisfying skin smoothing duo combines forces to leave your skin absolutely silky. Start with our spa-grade Lemon & Sage Body Polish, packed with gritty goodness from real natural Sea Salt, to help slough away dead skin while gently exfoliating and purifying. Then, layer on Lemon & Sage Body Butter to lock in the smoothness.
+                
+                            - Clean, cruelty-free and vegan
+                        </div>
+                        <hr style="height: .1px; width: 100%; background-color: black;">
+                        <div class="cli">
+                            <h4>HOW TO USE</h4>
+                            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                <button class="showBtn" id="showB2">+</button>
+                                <button class="collapseBtn" id="collB2">-</button>
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <hr style="height: .1px; width: 100%; background-color: black;">
+                        <div class="cli">
+                            <h4>KEY INGREDIENTS</h4>
+                            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                <button class="showBtn" id="showB3">+</button>
+                                <button class="collapseBtn" id="collB3">-</button>
+                            </div>  
+                        </div>
+                        
+                        <hr style="height: .1px; width: 100%; background-color: black;">
+                        <div class="cli">
+                            <h4>PAIRS WELL WITH</h4>
+                            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                <button class="showBtn" id="showB4">+</button>
+                                <button class="collapseBtn" id="collB4">-</button>
+                            </div>
+                        </div>
+                        
+                        <hr style="height: .1px; width: 100%; background-color: black;">
+                    </div>
+                
+                </div>
+            `)
+    }
+    $(`#B-cart${p.id}`).click(function(){
+
+        $(".blissCart").toggleClass("none show")
+        $(".overlay").css({
+            "display": "flex"
+        })
+
+        $(".cart-mid").append(
+            `
+            <div class="cart-item" id="cartItem${p.id}">
+                <div class="cart-img">
+                    <img class="cart-image" src=${p.images} alt="IMAGES">
+                </div>
+                <div class="cart-text">
+                    <div>
+                        <h3>${p.title}</h3>
+                    </div>
+                    <div class="cart-Btns" style="text-align: center;">
+                        <div style="height: 25px; width: 25px; border: .5px solid black;" id= "subB2_${p.id}">-</div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;" id="B-quanInput2_${p.id}"></div>
+                        <div style="height: 25px; width: 25px; border: .5px solid black;" id= "addB2_${p.id}">+</div>
+                    </div>
+                </div>
+                <div class="cart-trash" id="cartTrash${p.id}" style="display: flex; flex-direction: column; align-items: right; cursor: pointer;">
+                    <img style="width: 25px; height: 25px;" src="images/trash-bin.png" alt="IMAGES">
+                    <h5>$${p.price}</h5>
+                </div>    
+            </div>   
+            `
+        )
+
+    })
+    $(`#cartTrash${p.id}`).click(function(){
+        $(`#cartItem${p.id}`).hide()
+    })
+    console.log(`#cartItem${p.id}`)
+    $("#cartClose2").click(function(){
+        $(".blissCart").toggleClass("none show")
+        $(".overlay").hide()
+   })
+
+   console.log(`Here it is, #addB${p.id}`)
+   console.log(`Here it is, #addB${p.id}`)
+   
+    let inputValue = $(`#B-quanInput${p.id}`).val()
+   $(`#addB${p.id}`).click(function(){
+     inputValue++
+     console.log(inputValue)
+     $(`#B-quanInput${p.id}`).text(`${inputValue}`)
+   })
+   
+   $(`#subB${p.id}`).click(function(){
+     inputValue--
+     console.log(inputValue)
+     $(`#B-quanInput${p.id}`).text(`${inputValue}`)
+   })
+   ////////////////////////////////////////////////
+    let inputValue2 = $(`B-quanInput${p.id}`).val()
+   $(`#addB2_${p.id}`).click(function(){
+     inputValue2++
+     console.log(inputValue2)
+     $(`B-quanInput2_${p.id}`).text(`${inputValue2}`)
+   })
+   
+   $(`#subB2_${p.id}`).click(function(){
+     inputValue2--
+     console.log(inputValue2)
+     $(`#B-quanInput2_${p.id}`).text(`${inputValue2}`)
+   })
+
+
         
     $("#otherBtn").click(function(){
         $("#otherDrop").toggleClass("none block")

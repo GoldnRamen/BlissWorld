@@ -362,7 +362,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
     width: 550px;
     object-fit: cover;
     object-position: center;
-    z-index: 1;
+    /* z-index: 1; */
 }
 .B-scrollBtns{
     display: flex;

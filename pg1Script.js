@@ -183,54 +183,54 @@ $(document).ready(function() {
    $(".collapseBtn").hide()
    $(".conten").hide()
 
-    $("#showB1").click(
-     function(){
-          $("#showB1").hide()
-          $("#collB1").show()
-          $("#conten1").toggle()          
-    })
-    $("#collB1").click(
-     function(){
-          $("#showB1").show()
-          $("#collB1").hide()
-          $("#conten1").toggle()          
-    })
-    $("#showB2").click(
-     function(){
-          $("#showB2").hide()
-          $("#collB2").show()
-          $("#conten2").toggle()          
-    })
-    $("#collB2").click(
-     function(){
-          $("#showB2").show()
-          $("#collB2").hide()
-          $("#conten2").toggle()          
-    })
-    $("#showB3").click(
-     function(){
-          $("#showB3").hide()
-          $("#collB3").show()
-          $("#conten3").toggle()          
-    })
-    $("#collB3").click(
-     function(){
-          $("#showB3").show()
-          $("#collB3").hide()
-          $("#conten3").toggle()          
-    })
-    $("#showB4").click(
-     function(){
-          $("#showB4").hide()
-          $("#collB4").show()
-          $("#conten4").toggle()          
-    })
-    $("#collB4").click(
-     function(){
-          $("#showB4").show()
-          $("#collB4").hide()
-          $("#conten4").toggle()          
-    })
+//     $("#showB1").click(
+//      function(){
+//           $("#showB1").hide()
+//           $("#collB1").show()
+//           $("#conten1").toggle()          
+//     })
+//     $("#collB1").click(
+//      function(){
+//           $("#showB1").show()
+//           $("#collB1").hide()
+//           $("#conten1").toggle()          
+//     })
+//     $("#showB2").click(
+//      function(){
+//           $("#showB2").hide()
+//           $("#collB2").show()
+//           $("#conten2").toggle()          
+//     })
+//     $("#collB2").click(
+//      function(){
+//           $("#showB2").show()
+//           $("#collB2").hide()
+//           $("#conten2").toggle()          
+//     })
+//     $("#showB3").click(
+//      function(){
+//           $("#showB3").hide()
+//           $("#collB3").show()
+//           $("#conten3").toggle()          
+//     })
+//     $("#collB3").click(
+//      function(){
+//           $("#showB3").show()
+//           $("#collB3").hide()
+//           $("#conten3").toggle()          
+//     })
+//     $("#showB4").click(
+//      function(){
+//           $("#showB4").hide()
+//           $("#collB4").show()
+//           $("#conten4").toggle()          
+//     })
+//     $("#collB4").click(
+//      function(){
+//           $("#showB4").show()
+//           $("#collB4").hide()
+//           $("#conten4").toggle()          
+//     })
 
     ////////////////////////////////////////////////
     $("#prodDetail1").hover(
@@ -605,10 +605,7 @@ $(document).ready(function() {
           $(".blissCart").hide()
           $(".overlay").hide()
      })
-     $("#cartClose2").click(function(){
-          $(".blissCart").hide()
-          $(".overlay").hide()
-     })
+    
      
      $("#B-cart").click(function(){
           $(".blissCart").show()
