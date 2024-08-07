@@ -69,6 +69,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
     margin-right: 5px;
 }
 .cart-text{
+    width: 250px;
     display: flex;
     flex-direction: column;
     margin: 20px;

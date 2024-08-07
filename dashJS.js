@@ -349,6 +349,14 @@ $(document).ready(function(){
                         <img src="images/rating.png" alt="IMAGES">
                         <h3>Write a review</h3>
                     </div>
+                    <div>
+                        <div>
+                            <form id="reviewForm ">
+                                <textarea id="reviewNote" style="width: 80%; padding: 10px; height: 100px;"></textarea>
+                                <button id="reviewSubmit" type= "submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="B-prodDetail">
                         <p><h2>${p.title}</h2></p> 
                         <p>${p.descp}</p>
@@ -366,7 +374,7 @@ $(document).ready(function(){
                             <h4>WHAT IT IS</h4>
                             <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 <button class="showBtn" id="showB1">+</button>
-                                <button class="collapseBtn" id="collB1">-</button>
+                                <button class="collapseBtn none" id="collB1">-</button>
                             </div>
                         </div>
                         <div class="conten" id="conten1">
@@ -379,7 +387,7 @@ $(document).ready(function(){
                             <h4>HOW TO USE</h4>
                             <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 <button class="showBtn" id="showB2">+</button>
-                                <button class="collapseBtn" id="collB2">-</button>
+                                <button class="collapseBtn none" id="collB2">-</button>
                             </div>
                         </div>
                             
@@ -389,7 +397,7 @@ $(document).ready(function(){
                             <h4>KEY INGREDIENTS</h4>
                             <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 <button class="showBtn" id="showB3">+</button>
-                                <button class="collapseBtn" id="collB3">-</button>
+                                <button class="collapseBtn none" id="collB3">-</button>
                             </div>  
                         </div>
                         
@@ -398,7 +406,7 @@ $(document).ready(function(){
                             <h4>PAIRS WELL WITH</h4>
                             <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 <button class="showBtn" id="showB4">+</button>
-                                <button class="collapseBtn" id="collB4">-</button>
+                                <button class="collapseBtn none" id="collB4">-</button>
                             </div>
                         </div>
                         
@@ -407,7 +415,67 @@ $(document).ready(function(){
                 
                 </div>
             `)
+
+            
     }
+    $("#reviewForm").on("submit", function(){
+        let reviews = $("#reviewNote").val()
+        let product_id = productguy.id
+        let user_id = user_ID
+
+        data = {
+            "user_id": user_id,
+            "product_id": product_id,
+            "text": reviews
+        }
+
+        $.ajax({
+            url: `${api_name}/reviews`,
+            method: "POST",
+            data: data,
+            contentType: "application/json",
+            success: function(res){
+                if(res.code === 404){
+                    alert("Network Error")
+                }
+                else{
+                    alert("Thanks for your feedback!")
+                    $("#reviewDiv").append(
+                        `
+                        <div data-id = ${res.id}>
+                            <div class="lastDiv-Left">
+                                <div><h2>${res.name}</h2></div>
+                            </div>
+                            <div class="lastDiv-Mid">
+                                <div class="Mid-right">
+                                    <div>
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                    </div>
+                                    <div class="margin-0">
+                                        <h2><b>USE, USE USE!</b></h2>
+                                        <h3><p>${res.text}</p></h3>
+                                    </div>
+                                    <div class="helpful">
+                                        <p>Helpful?</p>
+                                        <p>(0)</p>
+                                        <p>(0)</p>
+                                        <p>Report</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    )
+                }
+                localStorage.setItem("reviews", JSON.stringify(res))    
+                
+            }
+        })
+    })
 //     <div class="B-quantity">
 //     <button id="subB${p.id}">-</button>
 //     <h4 id="B-quanInput${p.id}">1</h4>
@@ -512,20 +580,24 @@ $(document).ready(function(){
     
     
    
-   
-
-    $("#showB1").click(
+   /////////////////////////////////////////////////
+   /////////////Collapse and Reveal buttons////////
+        $("#showB1").hide()
+        $("#conten1").hide()
+        $("#showB1").click(
         function(){
              $("#showB1").hide()
              $("#collB1").show()
-             $("#conten1").toggle()          
-       })
+             $("#conten1").toggle()  
+        })
        $("#collB1").click(
         function(){
              $("#showB1").show()
              $("#collB1").hide()
              $("#conten1").toggle()          
        })
+
+       $("#showB2").hide()
        $("#showB2").click(
         function(){
              $("#showB2").hide()
@@ -538,6 +610,8 @@ $(document).ready(function(){
              $("#collB2").hide()
              $("#conten2").toggle()          
        })
+
+       $("#showB3").hide()
        $("#showB3").click(
         function(){
              $("#showB3").hide()
@@ -550,6 +624,8 @@ $(document).ready(function(){
              $("#collB3").hide()
              $("#conten3").toggle()          
        })
+
+       $("#showB4").hide()
        $("#showB4").click(
         function(){
              $("#showB4").hide()
@@ -562,6 +638,8 @@ $(document).ready(function(){
              $("#collB4").hide()
              $("#conten4").toggle()          
        })
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////
     ///////////////Cart/////////////////////////////
@@ -579,40 +657,44 @@ $(document).ready(function(){
         $(".blissCart").toggleClass("none show");
         $(".overlay").css({ "display": "flex" });
         addToCart(p);
-        var itemCost = $(`#B-quanInput${p.id}`).text()
+        // var itemCost = $(`#B-quanInput${p.id}`).text()
     });
+    function updateQuantity(productId, change) {
+        let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
+        let product = Kart.find(p => p.id === productId);
 
-    // Function to add a product to the cart
+        if (product) {
+            product.quantity = Math.max(1, (product.quantity || 0) + change); // Ensure quantity is at least 1
+            localStorage.setItem('Kart', JSON.stringify(Kart));
+            renderCart(); // Update cart display
+        }
+    }
     function addToCart(product) {
         // Retrieve the current cart from localStorage
-        let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
-
-        // Check if the product already exists in the cart
+        let Kart = JSON.parse(localStorage.getItem('Kart')) || [];   
         let existingProduct = Kart.find(p => p.id === product.id);
         if (existingProduct) {
             // If the product exists, update the quantity
             existingProduct.quantity = (existingProduct.quantity || 0) + 1;
-        } else {
+        }
+        else {
             // If the product doesn't exist, set default quantity and add it to the cart
             product.quantity = 1; // Initialize quantity
             Kart.push(product);
         }
-
-        // Save the updated cart back to localStorage
         localStorage.setItem('Kart', JSON.stringify(Kart));
 
         // Update the cart display
         renderCart();
     }
-
-    // Function to render the cart
     function renderCart() {
         // Retrieve the cart from localStorage
         let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
 
         // Clear the current cart display
         $(".cart-mid").empty();
-
+        let cartsum= 0
+        
         // Render each product in the cart
         Kart.forEach(p => {
             $(".cart-mid").append(`
@@ -625,9 +707,9 @@ $(document).ready(function(){
                             <h3>${p.title}</h3>
                         </div>
                         <div class="cart-Btns" style="text-align: center;">
-                            <div style="height: 25px; width: 25px; border: .5px solid black;" id="subB2_${p.id}">-</div>
-                            <div style="height: 25px; width: 25px; border: .5px solid black;" id="B-quanInput2_${p.id}">${p.quantity}</div>
-                            <div style="height: 25px; width: 25px; border: .5px solid black;" id="addB2_${p.id}">+</div>
+                            <div style="height: 25px; width: 25px; border: .5px solid black; cursor: pointer;" id="subB2_${p.id}">-</div>
+                            <div style="height: 25px; width: 25px; border: .5px solid black; cursor: pointer;" id="B-quanInput2_${p.id}">${p.quantity}</div>
+                            <div style="height: 25px; width: 25px; border: .5px solid black; cursor: pointer;" id="addB2_${p.id}">+</div>
                         </div>
                     </div>
                     <div class="cart-trash" id="cartTrash${p.id}" style="display: flex; flex-direction: column; align-items: right; cursor: pointer;">
@@ -636,8 +718,14 @@ $(document).ready(function(){
                     </div>    
                 </div>
             `);
+            getNumberOfItems()
+            $(`#addB2_${p.id}`).click(function(){
+                updateQuantity(p.id, 1)
+            })
+            $(`#subB2_${p.id}`).click(function(){
+                updateQuantity(p.id, -1)
+            })
 
-            // Add click event for removing items
             $(`#cartTrash${p.id}`).click(function() {
                 removeFromCart(p.id);
             });
@@ -645,9 +733,9 @@ $(document).ready(function(){
             // Add click events for quantity buttons if needed
             // Example event handlers for quantity buttons can be added here
         });
+        updateTotalSum();
     }
-
-    // Function to remove an item from the cart
+    renderCart();
     function removeFromCart(productId) {
         let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
         // Filter out the item with the given productId
@@ -655,32 +743,47 @@ $(document).ready(function(){
         localStorage.setItem('Kart', JSON.stringify(Kart));
         renderCart(); // Update the cart display after removal
     }
+    function updateTotalSum() {
+        let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
+        let sumTotal = Kart.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+        $("#sumtotal").text(`$${sumTotal.toFixed(2)}`);
+    }
+    function getNumberOfItems() {
+        let Kart = JSON.parse(localStorage.getItem('Kart')) || [];
+        let itemNumber = Kart.length; // Count the number of distinct items
+        $("#itemtotal").text(`${itemNumber}`);
+    }
+    getNumberOfItems()
 
-    // Example usage to initialize the cart display
-    renderCart();
-   
+    $("#checkoutBtn").on("click", function () {
+        $.ajax({
+            url: `${api_name}/carts/checkout`,
+            method: "POST",
+            data: JSON.stringify(USERID),
+            contentType: "appication/json",
+            success: function(){
+                alert("Order(s) placed!")
+                // $(".cart-mid").empty()
+            },
+            error: function(){
+                alert("Error processing order")
+            }
+
+        })
+        
+    })
    //////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////
     
    ////////////////////////////////////////////////////////////////////////////// 
     //////////////Product Detail Functionality////////////////////////////////////
-    let inputValue = $(`#B-quanInput${p.id}`).val()
-   $(`#addB${p.id}`).click(function(){
-     inputValue++
-     console.log(inputValue)
-     $(`#B-quanInput${p.id}`).text(`${inputValue}`)
-   })
-   $(`#subB${p.id}`).click(function(){
-     inputValue--
-     console.log(inputValue)
-     $(`#B-quanInput${p.id}`).text(`${inputValue}`)
-   })
-   ////////////////////////////////////////////////
+    // let inputValue = $(`#B-quanInput${p.id}`).val()
+   
     let inputValue2 = $(`B-quanInput${p.id}`).val()
    $(`#addB2_${p.id}`).click(function(){
      inputValue2++
      console.log(inputValue2)
-     $(`B-quanInput2_${p.id}`).text(`${inputValue2}`)
+     $(`#B-quanInput2_${p.id}`).text(`${inputValue2}`)
    })
    $(`#subB2_${p.id}`).click(function(){
      inputValue2--
