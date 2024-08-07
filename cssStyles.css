@@ -662,6 +662,11 @@ src: url("./CeraStencilPRO-Regular.ttf");
 .selectWidth{
     width: 50px;
 }
+.gridd{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
 .groupd{
     border: .5px solid black;
     width: fit-content;
@@ -739,7 +744,7 @@ src: url("./CeraStencilPRO-Regular.ttf");
     display: flex;
     gap: 10px;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content:stretch;
     align-items: center;
     border-bottom: 2px solid black;
     /* position: fixed; */
