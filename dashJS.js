@@ -351,7 +351,7 @@ $(document).ready(function(){
                     </div>
                     <div>
                         <div>
-                            <form id="reviewForm ">
+                            <form id="reviewForm">
                                 <textarea id="reviewNote" style="width: 80%; padding: 10px; height: 100px;"></textarea>
                                 <button id="reviewSubmit" type= "submit">Submit</button>
                             </form>
@@ -418,64 +418,8 @@ $(document).ready(function(){
 
             
     }
-    $("#reviewForm").on("submit", function(){
-        let reviews = $("#reviewNote").val()
-        let product_id = productguy.id
-        let user_id = user_ID
 
-        data = {
-            "user_id": user_id,
-            "product_id": product_id,
-            "text": reviews
-        }
-
-        $.ajax({
-            url: `${api_name}/reviews`,
-            method: "POST",
-            data: data,
-            contentType: "application/json",
-            success: function(res){
-                if(res.code === 404){
-                    alert("Network Error")
-                }
-                else{
-                    alert("Thanks for your feedback!")
-                    $("#reviewDiv").append(
-                        `
-                        <div data-id = ${res.id}>
-                            <div class="lastDiv-Left">
-                                <div><h2>${res.name}</h2></div>
-                            </div>
-                            <div class="lastDiv-Mid">
-                                <div class="Mid-right">
-                                    <div>
-                                        <img src="images/favorite.png" alt="IMAGES">
-                                        <img src="images/favorite.png" alt="IMAGES">
-                                        <img src="images/favorite.png" alt="IMAGES">
-                                        <img src="images/favorite.png" alt="IMAGES">
-                                        <img src="images/favorite.png" alt="IMAGES">
-                                    </div>
-                                    <div class="margin-0">
-                                        <h2><b>USE, USE USE!</b></h2>
-                                        <h3><p>${res.text}</p></h3>
-                                    </div>
-                                    <div class="helpful">
-                                        <p>Helpful?</p>
-                                        <p>(0)</p>
-                                        <p>(0)</p>
-                                        <p>Report</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `
-                    )
-                }
-                localStorage.setItem("reviews", JSON.stringify(res))    
-                
-            }
-        })
-    })
+    
 //     <div class="B-quantity">
 //     <button id="subB${p.id}">-</button>
 //     <h4 id="B-quanInput${p.id}">1</h4>
@@ -500,10 +444,137 @@ $(document).ready(function(){
     ///////////////////////////////////////////////
 
    
+    $("#reviewForm").on("submit", function(e){
+        e.preventDefault()
+        valid = true
+        let reviews = $("#reviewNote").val()
+        let product_id = productguy.id
+        let user_id = user_ID.id
+
+        data = {
+            "user_id": user_id,
+            "product_id": product_id,
+            "text": reviews
+        }
+        console.log("Sending data", data)
+        $.ajax({
+            url: `${api_name}/reviews`,
+            method: "POST",
+            data: data,
+            success: function(res){  
+                if (valid) {
+                    console.log("Success response:", res);
+                    alert("Thanks for your feedback!");
+                    
+                    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                    const existingReview = reviews.find(review => review.id === res.data.id);
+
+                    if (!existingReview) {
+                        // Append the new review if it's not already in the list
+                        reviews.push(res.data);
+        
+                        // Update localStorage with the new list of reviews
+                        localStorage.setItem('reviews', JSON.stringify(reviews));
+                    } else {
+                        console.log("Review already exists in localStorage.");
+                    }   
+                } else {
+                    alert("Network Error");
+                }
+            },
+            error: function(err) {
+                console.log(err);
+                alert("An error occurred. Please try again.");
+            }
+        });
+        
+    })
 
   
-    
-    /////////////////////////////////////////
+    $("#showReviews").on("click", function() {
+        
+        $.ajax({
+            url: `${api_name}/reviews?product_id=${productguy.id}`, // Correct URL format
+            method: "GET",
+            success: function(res) {
+                // Ensure the response data is valid
+                console.log("Get was susscessful", res)
+                
+                console.log(res)
+                let reviewIDs = JSON.parse(localStorage.getItem('reviewIDs')) || []
+                $("#reviewDiv").empty();
+                // res.forEach(review => {console.log(`Username: ${review.user.first_name}`)})
+                res.forEach(review => {
+                    // reviewIDs.push(review);
+                    $("#reviewDiv").append(
+                        `
+                        <div data-id="${review.id}" class="lastDiv">
+                            <div class="lastDiv-Left">
+                                <div><h2>${review.user.first_name|| 'Anonymous'}</h2></div>
+                            </div>
+                            <div class="lastDiv-Mid">
+                                <div class="Mid-right">
+                                    <div>
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                        <img src="images/favorite.png" alt="IMAGES">
+                                    </div>
+                                    <div class="margin-0">
+                                        <h2><b>USE, USE USE!</b></h2>
+                                        <h3><p>${review.text}</p></h3>
+                                    </div>
+                                    <div class="helpful">
+                                        <p>Helpful?</p>
+                                        <p>(0)</p>
+                                        <p>(0)</p>
+                                        <p>Report</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    );
+                    localStorage.setItem('reviewIDs', JSON.stringify(reviewIDs));
+                })
+            },
+            error: function(err) {
+                console.log(err);
+                alert("An error occurred. Please try again.");
+            }                   
+
+                // let tandi = JSON.parse(localStorage.getItem("reviews"))
+                // console.log(tandi.data.text)
+                // console.log(user_ID.first_name)
+
+                
+                
+                    // Retrieve existing review IDs from localStorage
+                    // let reviews = JSON.parse(localStorage.getItem('user_reviews'));
+                    
+
+                    // Clear previous reviews if necessary
+                    // $("#reviewDiv").empty();
+
+                    // Loop through the reviews and append them
+                    // Update reviewIDs with the new review IDs
+                    // new_rev = reviews.id
+                    // localStorage.setItem("reviewIDs",(new_rev))
+                        
+                        // Append the review to the reviewDiv
+                       
+
+                    // Store the updated review IDs in localStorage
+                    
+                //  else {
+                //     console.error('Invalid response data:', res);
+                //     alert("No reviews found.");
+                // }
+           
+        });
+    });
+//////////////////////////////////////
     // $('#productRefund').trigger('change')
     // $('#productDiscount2').trigger('change')
     // $('#productShipping').trigger('change')
